@@ -36,4 +36,5 @@
         <li> ERD : link </li>
         <li> usecas : link </li>
         <li> userinterface dan user experience : link </li>
+        <li> laporan : link </li>
     </ul>
