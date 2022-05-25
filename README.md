@@ -33,7 +33,7 @@
     <br/> 
  <p> untuk resource akan di camtumkan dibagian sini </p>
     <ul>
-        <li> ERD : link </li>
+        <li> ERD : https://whimsical.com/rental-kamera-6s7tmaGkt6j3gb7qtByxth@2Ux7TurymNAqSVcFeD13</li>
         <li> usecas : link </li>
         <li> userinterface dan user experience : link </li>
         <li> laporan : link </li>
