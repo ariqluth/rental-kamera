@@ -33,8 +33,9 @@
     <br/> 
  <p> untuk resource akan di camtumkan dibagian sini </p>
     <ul>
-        <li> ERD : link </li>
-        <li> usecas : link </li>
+        <li> ERD : https://whimsical.com/rental-kamera-6s7tmaGkt6j3gb7qtByxth@2Ux7TurymNAqSVcFeD13</li>
+        <li> usecas : https://drive.google.com/file/d/1cjauoYzqxUxaAAj9eLFOLyE3NF85OfE-/view </li>
         <li> userinterface dan user experience : link </li>
         <li> laporan : link </li>
+        <li> Stackholder team : https://time-line-d3e.notion.site/a53acacd453749e6a6cc55dfd7e3872c?v=5396c2e2d43148e8ba4721227daeeeb7 </li>
     </ul>
