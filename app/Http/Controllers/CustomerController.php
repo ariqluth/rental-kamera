@@ -13,9 +13,32 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        return view('pengunjung.homepage');
     }
 
+    public function categoryDSLR() {
+        return view('pengunjung.detailDSLR');
+    }
+
+    public function categoryMirrorless() {
+        return view('pengunjung.detailMirrorless');
+    }
+
+    public function categoryActionCamera() {
+        return view('pengunjung.detailActionCamera');
+    }
+
+    public function categoryVideoSupport() {
+        return view('pengunjung.detailVideoSupport');
+    }
+
+    public function contact() {
+        return view('pengunjung.contact');
+    }
+
+    public function about() {
+        return view('pengunjung.about');
+    }
     /**
      * Show the form for creating a new resource.
      *

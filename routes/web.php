@@ -1,6 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +17,30 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pengunjung.homepage');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// detail category camera
+Route::get('/detail-category-DLSR', [App\Http\Controllers\CustomerController::class, 'categoryDSLR'])->name('categoryDLSR');
+
+// detail category camera
+Route::get('/detail-category-Mirrorless', [App\Http\Controllers\CustomerController::class, 'categoryMirrorless'])->name('categoryMirrorless');
+
+// detail category camera
+Route::get('/detail-category-ActionCamera', [App\Http\Controllers\CustomerController::class, 'categoryActionCamera'])->name('categoryActionCamera');
+
+// detail category camera
+Route::get('/detail-category-VideoSupport', [App\Http\Controllers\CustomerController::class, 'categoryVideoSupport'])->name('categoryVideoSupport');
+
+
+
+// contact dam about us
+
+Route::get('/contact', [App\Http\Controllers\CustomerController::class, 'contact'])->name('contact');
+
+
+Route::get('/about', [App\Http\Controllers\CustomerController::class, 'about'])->name('about');
