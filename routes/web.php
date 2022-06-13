@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@ Route::get('/', function () {
 Auth::routes();
 
 // Login dan registered
-Route::post('/login', [LoginController::class, 'autentikasi']);
+// Route::post('/login', [LoginController::class, 'autentikasi']);
 
 
 
@@ -55,4 +56,4 @@ Route::get('/contact', [App\Http\Controllers\CustomerController::class, 'contact
 Route::get('/about', [App\Http\Controllers\CustomerController::class, 'about'])->name('about');
 
 // login hak hakAkses
-Route::get('/pemilik/home', [App\Http\Controllers\HomeController::class, 'hakAkses'])->name('pemilik.home')->middleware('hakAkses');
+Route::get('/pemilik/home', [HomeController::class, 'hakAkses'])->name('pemilik')->middleware('hak_akses');

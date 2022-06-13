@@ -19,5 +19,7 @@ class hakAkses
         if(auth()->user()->hak_akses == 1){
              return $next($request);
         }
+
+        return redirect('home')->with('error',"You don't have admin access.");
     }
 }

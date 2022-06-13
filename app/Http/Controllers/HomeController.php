@@ -28,6 +28,6 @@ class HomeController extends Controller
 
     public function hakAkses()
     {
-        return view('pemilik.dashboard');
+        return view('Pemilik.dashboard');
     }
 }

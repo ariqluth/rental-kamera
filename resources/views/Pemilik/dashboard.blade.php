@@ -1,4 +1,4 @@
-@extends('layouts.header.dashboardPemilik')
+@extends('layouts.header.headerPemilik')
 @section('dashboardDetail')
 
   <!-- Content Wrapper. Contains page content -->
