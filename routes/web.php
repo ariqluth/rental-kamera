@@ -53,3 +53,6 @@ Route::get('/contact', [App\Http\Controllers\CustomerController::class, 'contact
 
 
 Route::get('/about', [App\Http\Controllers\CustomerController::class, 'about'])->name('about');
+
+// login hak hakAkses
+Route::get('/pemilik/home', [App\Http\Controllers\HomeController::class, 'hakAkses'])->name('pemilik.home')->middleware('hakAkses');
