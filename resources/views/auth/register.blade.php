@@ -63,15 +63,32 @@
                             placeholder="Enter your password confirm" class="form-control" name="password_confirmation" required autocomplete="new-password">
 
                         </div>
+
+                        <div class="inputBx">
+                            <label for="alamat" class="col-md-4 col-form-label text-md">{{ __('alamat') }}</label>
+                            
+                            <input id="alamat" type="alamat" 
+                            placeholder="Enter your address" class="form-control" name="alamat">
+
+                        </div>
+
+                        <div class="inputBx-select">
+                            <label for="role" class="col-md-4 col-form-label text-md">{{ __('Role') }}</label>
+                           
+                                <select name="role" id="role">
+                                    <option value="">Pilih Role</option>
+                                    <option value="1">Customer</option>
+                                    <option value="2">Pemilik</option>
+                                </select>
+
+                        </div>
                        
                         <div class="inputBx">
                             <input type="submit" value="Register" name="">
                                 
                         </div>
 
-                        <div class="inputBx">
-                            <input type="submit" value="Login With Google" name="">
-                        </div>
+                      
 
                     </form>
             </div>

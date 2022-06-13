@@ -67,17 +67,43 @@ section .contentBx .formBx h2 {
 section .contentBx .formBx .inputBx {
     margin-bottom: 20px;
 }
+section .contentBx .formBx .inputBx-select {
+    margin-bottom: 20px;
+}
 
 section .contentBx .formBx .inputBx label {
     color: #607d8b;
     font-size: 16px;
     font-weight: 300;
-    display: inline-block;
+    display: contents;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+section .contentBx .formBx .inputBx-select label {
+    color: #607d8b;
+    font-size: 16px;
+    font-weight: 300;
+    display: contents;
     margin-bottom: 5px;
     letter-spacing: 1px;
 }
 
 section .contentBx .formBx .inputBx input {
+    width: 100%;
+    padding: 10px 20px;
+    border: 1px solid #ff4584;
+    outline: none;
+    font-size: 16px;
+    font-weight: 400;
+    color: #607d8b;
+    background: transparent;
+    border-radius: 30px;
+    letter-spacing: 1px;
+}
+
+
+section .contentBx .formBx .inputBx-select select {
     width: 100%;
     padding: 10px 20px;
     border: 1px solid #ff4584;

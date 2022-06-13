@@ -20,7 +20,14 @@ Route::get('/', function () {
     return view('pengunjung.homepage');
 });
 
+
+
 Auth::routes();
+
+// Login dan registered
+Route::post('/login', [LoginController::class, 'autentikasi']);
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -36,6 +43,8 @@ Route::get('/detail-category-ActionCamera', [App\Http\Controllers\CustomerContro
 // detail category camera
 Route::get('/detail-category-VideoSupport', [App\Http\Controllers\CustomerController::class, 'categoryVideoSupport'])->name('categoryVideoSupport');
 
+// dashboard pemilik form
+Route::get('/dashboard-detail', [App\Http\Controllers\PemilikController::class, 'dashboardDetail'])->name('dashboardDetail');
 
 
 // contact dam about us

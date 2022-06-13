@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePemilikTable extends Migration
+class CreateCustomerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreatePemilikTable extends Migration
      */
     public function up()
     {
-        Schema::create('pemilik', function (Blueprint $table) {
+        Schema::create('customer', function (Blueprint $table) {
             $table->id();
-            $table->string('name_pemilik');
-            $table->string('email_pemilik');
-            $table->string('password_pemilik');
+            $table->string('name_customer');
+            $table->string('email_customer');
+            $table->string('password_customer');
             $table->string('hak_akses');
-            $table->string('alamat_pemilik');
-            $table->string('no_hp_pemilik');
-            $table->string('gambar_profile_pemilik')->nullable();
+            $table->string('alamat_customer');
+            $table->string('no_hp_customer');
+            $table->string('gambar_profile_customer')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreatePemilikTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pemilik');
+        Schema::dropIfExists('customer');
     }
 }
