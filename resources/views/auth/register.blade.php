@@ -75,7 +75,7 @@
                         <div class="inputBx-select">
                             <label for="role" class="col-md-4 col-form-label text-md">{{ __('Role') }}</label>
                            
-                                <select name="role" id="role">
+                                <select name="hak_akses" id="hak_akses">
                                     <option value="">Pilih Role</option>
                                     <option value="1">Customer</option>
                                     <option value="2">Pemilik</option>

@@ -20,6 +20,12 @@ class hakAkses
              return $next($request);
         }
 
-        return redirect('home')->with('error',"You don't have admin access.");
+        // if (!\Session::has('id_jalur') &&!\Session::has('id_c_mhs')) {
+        //     return redirect('/registrasi/login');
+        // }
+        // return $next($request);
+
+
+        return redirect('home')->with('error',"You don't have pemilik access.");
     }
 }

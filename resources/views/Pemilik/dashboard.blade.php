@@ -1,5 +1,5 @@
 @extends('layouts.header.headerPemilik')
-@section('dashboardDetail')
+@section('dashboard')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -15,9 +15,9 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>SELAMAT DATANG ADMIN</h3>
+                  <h3>SELAMAT DATANG PEMILIK</h3>
   
-                  <p>Admin</p>
+                  <p>pemilik</p>
                 </div>
                 
         </div><!-- /.row -->
@@ -206,3 +206,4 @@
 </div>
 <!-- ./wrapper -->
 
+@endsection

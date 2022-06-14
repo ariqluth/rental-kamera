@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PemilikController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Auth\LoginController;
 
@@ -48,6 +49,25 @@ Route::get('/detail-category-VideoSupport', [App\Http\Controllers\CustomerContro
 Route::get('/dashboard-detail', [App\Http\Controllers\PemilikController::class, 'dashboardDetail'])->name('dashboardDetail');
 
 
+
+// dashboard pemilik dashboard
+
+// dashboard pemilik
+Route::get('/pemilik/home', [HomeController::class, 'hakAkses'])->name('pemilik')->middleware('hak_akses');
+// dashboard alat group 
+Route::get('/pemilik/alatdisewa', [PemilikController::class, 'alatdisewa'])->name('disewa');
+Route::get('/pemilik/alatdisewa-tambah', [PemilikController::class, 'alatdisewaTambah'])->name('disewaTambah');
+Route::get('/pemilik/alatdisewa-edit', [PemilikController::class, 'alatdisewaEdit'])->name('disewaEdit');
+Route::get('/pemilik/alatdisewa-detail', [PemilikController::class, 'alatdisewaDetail'])->name('disewaDetail');
+// 
+Route::get('/pemilik/kelolaPelanggan', [PemilikController::class, 'dataPelanggan'])->name('dataPelanggan');
+// 
+Route::get('/pemilik/laporan', [PemilikController::class, 'datalaporan'])->name('dataLaporan');
+
+Route::get('/pemilik/profile', [PemilikController::class, 'profilePemilik'])->name('profilpemilik');
+
+
+
 // contact dam about us
 
 Route::get('/contact', [App\Http\Controllers\CustomerController::class, 'contact'])->name('contact');
@@ -56,4 +76,3 @@ Route::get('/contact', [App\Http\Controllers\CustomerController::class, 'contact
 Route::get('/about', [App\Http\Controllers\CustomerController::class, 'about'])->name('about');
 
 // login hak hakAkses
-Route::get('/pemilik/home', [HomeController::class, 'hakAkses'])->name('pemilik')->middleware('hak_akses');
