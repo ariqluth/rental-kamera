@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -65,6 +66,15 @@ Route::get('/pemilik/kelolaPelanggan', [PemilikController::class, 'dataPelanggan
 Route::get('/pemilik/laporan', [PemilikController::class, 'datalaporan'])->name('dataLaporan');
 
 Route::get('/pemilik/profile', [PemilikController::class, 'profilePemilik'])->name('profilpemilik');
+
+// dasboard admin 
+Route::get('/admin/home', [AdminController::class, 'index'])->name('admin');
+
+Route::get('/admin/kelolaPelanggan', [AdminController::class, 'dataPelanggan'])->name('datacustomer');
+// 
+Route::get('admin/laporan', [AdminController::class, 'datalaporan'])->name('datalapor');
+
+
 
 
 

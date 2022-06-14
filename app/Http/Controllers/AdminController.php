@@ -13,7 +13,19 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.dashboard');
+    }
+
+
+
+    public function dataPelanggan()
+    {
+        return view('admin.pengelolaPelanggan');
+    }
+
+    public function datalaporan()
+    {
+        return view('admin.pengelolaLaporan');
     }
 
     /**

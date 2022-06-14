@@ -1,5 +1,5 @@
-@extends('layouts.header.dashboardPemilik')
-@section('dashboardDetail')
+@extends('layouts.header.headerAdmin')
+@section('dashboardAdmin')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -13,7 +13,7 @@
           <div class="col-sm-12">
             
               <!-- small box -->
-              <div class="small-box bg-warning">
+              <div class="small-box bg-success">
                 <div class="inner">
                   <h3>SELAMAT DATANG ADMIN</h3>
   
@@ -206,3 +206,5 @@
 </div>
 <!-- ./wrapper -->
 
+
+@endsection
