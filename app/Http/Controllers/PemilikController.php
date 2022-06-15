@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alat;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PemilikController extends Controller
 {
@@ -71,10 +73,39 @@ class PemilikController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function alat_store(Request $request)
     {
-        //
+    
+        // return $request;
+       if ($request->file('image')) {
+        $image_name = $request->file('image')->store('images', 'public');
     }
+
+ //melakukan validasi data
+   
+    $request->validate([
+       'Pemilik' => 'required',
+       'Nama_Kamera' => 'required', 
+       'Kategori' => 'required',
+       'Speksifikasi' => 'required',
+       'Gambar' => 'image|file|max:1024',
+       'Harga' => 'required',
+       'Stok' => 'required',
+
+    ]);
+    $alat = new Alat;
+    $alat->id_pemilik = $request->get('Pemilik');
+    $alat->kategori = $request->get('Kategori');
+    $alat->nama_alat = $request->get('Nama_Kamera');
+    $alat->speksifikasi = $request->get('Speksifikasi');
+    $alat->gambar = $image_name;
+    $alat->harga = $request->get('Harga');
+    $alat->stok = $request->get('Stok');
+    $alat->save();
+
+    return redirect()->route('Pemilik.alat')
+    ->with('success', 'Alat Kamera Berhasil Ditambahkan');
+}
 
     /**
      * Display the specified resource.
