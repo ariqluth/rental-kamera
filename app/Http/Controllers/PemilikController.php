@@ -46,6 +46,10 @@ class PemilikController extends Controller
         return view('Pemilik.pengelolaLaporan');
     }
 
+    public function kondisikamera(){
+        return view('Pemilik.kondisiKamera');
+    }
+
 
     public function profilePemilik()
     {

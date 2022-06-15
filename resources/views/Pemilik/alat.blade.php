@@ -26,7 +26,8 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-               <a href="{{Route('disewaTambah')}}" class="btn-lg btn-secondary">Tambahkan</a>
+               <a href="{{Route('disewaTambah')}}" class="btn-lg btn-success float-sm-right">Tambahkan</a>
+               <a href="{{Route('kondisi')}}" class="btn-lg btn-secondary float-right" style="margin-right:20px">Tambahkan Kondisi Kamera</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -38,6 +39,7 @@
                     <th>Speksifikasi</th>
                     <th>Harga</th>
                     <th>Stok</th>
+                    <th>Kondisi</th>
                     <th>Pemilik kamera</th>
                     <th>Gambar</th>
                     <th> Aksi</th>
@@ -51,6 +53,7 @@
                     </td>
                     <td>Win 95+</td>
                     <td> 4</td>
+                    <td>X</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>

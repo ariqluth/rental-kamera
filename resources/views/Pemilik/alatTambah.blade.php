@@ -20,6 +20,9 @@
     </section>
 
     <!-- Main content -->
+    <form method="post" action="{{ route('alat.store') }}" id="myForm" enctype="multipart/form-data">
+ 
+      @csrf
     <section class="content">
       <div class="row">
         <div class="col-md-12">
@@ -36,37 +39,29 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">Nama kamera</label>
-                <input type="text" id="inputName" class="form-control">
+                <input type="text" id="namakamera" class="form-control" name="namakamera">
               </div>
               <div class="form-group">
                 <label for="inputDescription">Speksifikasi</label>
-                <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                <textarea id="speksifikasi" class="form-control" rows="4" name="speksifikasi" ></textarea>
               </div>
               <div class="form-group">
                 <label for="inputStatus">kategori</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option selected disabled>Select one</option>
-                  <option>On Hold</option>
-                  <option>Canceled</option>
-                  <option>Success</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="inputStatus">kondisi</label>
-                <select id="inputStatus" class="form-control custom-select">
-                  <option selected disabled>Select one</option>
-                  <option>On Hold</option>
-                  <option>Canceled</option>
-                  <option>Success</option>
+                <select id="kategori" class="form-control custom-select" name="kategori">
+                  <option selected >Select one</option>
+                  <option>DSLR</option>
+                  <option>Mirrorless</option>
+                  <option>Action Camera</option>
+                  <option>Video Support</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="inputClientCompany">harga</label>
-                <input type="text" id="inputClientCompany" class="form-control">
+                <input type="text" id="harga" name="harga" class="form-control">
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">stok</label>
-                <input type="text" id="inputProjectLeader" class="form-control">
+                <input type="text" id="stok" name="stok" class="form-control">
               </div>
             </div>
             <!-- /.card-body -->
@@ -82,6 +77,7 @@
         </div>
       </div>
     </section>
+    </form>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

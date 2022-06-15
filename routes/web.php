@@ -60,6 +60,8 @@ Route::get('/pemilik/alatdisewa', [PemilikController::class, 'alatdisewa'])->nam
 Route::get('/pemilik/alatdisewa-tambah', [PemilikController::class, 'alatdisewaTambah'])->name('disewaTambah');
 Route::get('/pemilik/alatdisewa-edit', [PemilikController::class, 'alatdisewaEdit'])->name('disewaEdit');
 Route::get('/pemilik/alatdisewa-detail', [PemilikController::class, 'alatdisewaDetail'])->name('disewaDetail');
+
+Route::get('/pemilik/kondisi-kamera', [PemilikController::class, 'kondisikamera'])->name('kondisi');
 // 
 Route::get('/pemilik/kelolaPelanggan', [PemilikController::class, 'dataPelanggan'])->name('dataPelanggan');
 // 

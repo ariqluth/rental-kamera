@@ -108,7 +108,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image" style="opacity: .8">
-      <span class="brand-text font-weight-light">oment ID</span>
+      <span class="brand-text font-weight-light">Juragan Kamera</span>
     </a>
 
     <!-- Sidebar -->

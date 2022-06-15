@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en">
 <head>
 <link rel="shortcut icon" type="image/x-icon" href="images/icon.png">
-<title>Juragan Kamera - Rental Kamera Termurah di Jogja</title>
+<title>Juragan Kamera - Rental Kamera Termurah di malang</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
