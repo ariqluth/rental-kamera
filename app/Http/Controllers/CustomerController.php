@@ -39,6 +39,30 @@ class CustomerController extends Controller
     public function about() {
         return view('pengunjung.about');
     }
+
+    public function dashboardDetail() {
+        return view('customer.dashboard');
+    }
+
+    public function profile() {
+        return view('customer.dashboardProfile');
+    }
+
+    public function dashboardTransaksi() {
+        return view('customer.dashboardTransaksi');
+    }
+
+    public function dashboardPengambilan() {
+        return view('customer.dashboardPengambilan');
+    }
+
+    public function dashboardPengembilan() {
+        return view('customer.dashboardPengembalian');
+    }
+
+
+
+
     /**
      * Show the form for creating a new resource.
      *

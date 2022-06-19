@@ -78,6 +78,12 @@ Route::get('admin/laporan', [AdminController::class, 'datalaporan'])->name('data
 
 
 
+// Customer 
+Route::get('/customer/dashboard', [CustomerController::class, 'dashboardDetail'])->name('dashboardDetail');
+Route::get('/customer/profile', [CustomerController::class, 'profile'])->name('profile');
+Route::get('/customer/transaksi', [CustomerController::class, 'dashboardTransaksi'])->name('transaksi');
+Route::get('/customer/pengambilan', [CustomerController::class, 'dashboardPengambilan'])->name('pengambilan');
+Route::get('/customer/pengembalian', [CustomerController::class, 'dashboardPengembilan'])->name('pengembilan');
 
 
 // contact dam about us
