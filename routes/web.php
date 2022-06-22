@@ -5,8 +5,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PemilikController;
+use App\Http\Controllers\AlatController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\TesterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,10 +58,9 @@ Route::get('/dashboard-detail', [App\Http\Controllers\PemilikController::class, 
 // dashboard pemilik
 Route::get('/pemilik/home', [HomeController::class, 'hakAkses'])->name('pemilik')->middleware('hak_akses');
 // dashboard alat group 
-Route::get('/pemilik/alatdisewa', [PemilikController::class, 'alatdisewa'])->name('disewa');
-Route::get('/pemilik/alatdisewa-tambah', [PemilikController::class, 'alatdisewaTambah'])->name('disewaTambah');
-Route::get('/pemilik/alatdisewa-edit', [PemilikController::class, 'alatdisewaEdit'])->name('disewaEdit');
-Route::get('/pemilik/alatdisewa-detail', [PemilikController::class, 'alatdisewaDetail'])->name('disewaDetail');
+Route::resource('/pemilik/alat', '\App\Http\Controllers\AlatController');
+
+
 
 Route::get('/pemilik/kondisi-kamera', [PemilikController::class, 'kondisikamera'])->name('kondisi');
 // 
@@ -93,4 +94,11 @@ Route::get('/contact', [App\Http\Controllers\CustomerController::class, 'contact
 
 Route::get('/about', [App\Http\Controllers\CustomerController::class, 'about'])->name('about');
 
+Route::get('/detailproduct', [CustomerController::class, 'detailProduct'])->name('detailProduct');
+
+Route::get('/detail-invoce', [CustomerController::class, 'detailInvoice'])->name('detailInvoice');
+
 // login hak hakAkses
+
+// tester crude
+Route::resource('/tester', '\App\Http\Controllers\TesterController');

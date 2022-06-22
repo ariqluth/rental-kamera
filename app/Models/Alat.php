@@ -12,24 +12,19 @@ class Alat extends Model
     protected $table='alat'; // Eloquent akan membuat model mahasiswa menyimpan record ditabel mahasiswa
     protected $primaryKey = 'id'; // Memanggil isi DB Dengan primarykey
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'Pemilik',
-        'Nama_Alat',
-        'Kategori',
-        'Speksifikasi',
-        'Harga',
-        'Stok',
+        'nama_alat',
+        'kategori',
+        'speksifikasi',
+        'harga',
+        'stok',
+        'pemilik',
 
     ];
-    public function detailalat() {
-       return $this->hasOne(Detail_Alat::class);
-   }
+//     public function detailalat() {
+//        return $this->hasOne(Detail_Alat::class);
+//    }
    public function pemilik() {
-       return $this->belongsToMany(Pemilik::class , 'pemilik_id');
+       return $this->belongsTo(Pemilik::class);
    }
 }

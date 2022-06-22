@@ -1,64 +1,37 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Alat;
+use App\Models\Pemilik;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class PemilikController extends Controller
+class AlatController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-   
+    //
+    // crud
 
-    public function alatdisewa()
+    public function __construct()
     {
-        return view('Pemilik.alat');
-    }
-
-    public function alatdisewaTambah()
-    {
-        return view('Pemilik.alatTambah');
-    }
-
-    public function alatdisewaEdit()
-    {
-        return view('Pemilik.alatEdit');
-    }
-
-    public function alatdisewaDetail()
-    {
-        return view('Pemilik.detailAlat');
-    }
-
-    public function dataPelanggan()
-    {
-        return view('Pemilik.pengelolaPelanggan');
-    }
-
-    public function datalaporan()
-    {
-        return view('Pemilik.pengelolaLaporan');
-    }
-
-    public function kondisikamera(){
-        return view('Pemilik.kondisiKamera');
-    }
-
-
-    public function profilePemilik()
-    {
-        return view('Pemilik.profil');
+        $this->middleware('auth');
     }
 
     public function index()
     {
-        return view('Pemilik.alat');
+        if (request('search')){
+            $alat = Alat::where('nama_alat', 'like', '%'.request('search').'%')
+                                    ->orwhere('kategori', 'like', '%'.request('search').'%')
+                                    ->orwhere('stok', 'like', '%'.request('search').'%')
+                                    ->paginate(5);
+            return view('Pemilik.alat', ['paginate'=>$alat]);
+        } else {
+            //fungsi eloquent menampilkan data menggunakan pagination
+            $alat = Alat::with('pemilik')->latest()->get(); //mengambil semua isi tabel
+            $alat= Alat::orderBy('id','asc')->paginate(3);
+            return view('Pemilik.alat',['alat' => $alat ,'paginate'=>$alat]);
+        }
+       
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -66,8 +39,8 @@ class PemilikController extends Controller
      */
     public function create()
     {
-        //
-        return view('Pemilik.alatTambah');
+        $pemilik = Pemilik::all();
+        return view('Pemilik.alatTambah', ['pemilik' => $pemilik]);
     }
 
     /**
@@ -76,7 +49,7 @@ class PemilikController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function alat_store(Request $request)
+    public function store(Request $request)
     {
     
         // return $request;
@@ -87,27 +60,33 @@ class PemilikController extends Controller
  //melakukan validasi data
    
     $request->validate([
-       'pemilik' => 'required',
-       'nama_Kamera' => 'required', 
+       'nama_alat' => 'required', 
        'kategori' => 'required',
        'speksifikasi' => 'required',
-       'gambar' => 'image|file|max:1024',
        'harga' => 'required',
        'stok' => 'required',
+       'pemilik' => 'required',
 
     ]);
     $alat = new Alat;
-    $alat->id_pemilik = $request->get('pemilik');
     $alat->kategori = $request->get('kategori');
-    $alat->nama_alat = $request->get('nama_kamera');
+    $alat->nama_alat = $request->get('nama_alat');
     $alat->speksifikasi = $request->get('speksifikasi');
     $alat->gambar = $image_name;
     $alat->harga = $request->get('harga');
     $alat->stok = $request->get('stok');
+    $alat->users_id = $request->get('pemilik');
+    // dd($alat)->all;
     $alat->save();
 
-    return redirect()->route('Pemilik.alat')
-    ->with('success', 'Alat Kamera Berhasil Ditambahkan');
+    // $pemilik = new Pemilik;
+    // $pemilik->id = $request->get('users');
+
+    // $alat->pemilik()->associate($pemilik);
+    // $alat->save();
+
+    return redirect()->route('alat.index')->with('success', 'Alat Kamera Berhasil Ditambahkan');
+    // return redirect()->route('alat.index')->with('success', 'Alat Kamera Berhasil Ditambahkan');
 }
 
     /**
@@ -120,8 +99,8 @@ class PemilikController extends Controller
     {
         //
     
-   
-    return view('Pemilik.detailAlat');
+    $alat = Alat::find($id);
+    return view('Pemilik.detailAlat', compact('alat'));
     }
 
     /**
@@ -130,11 +109,13 @@ class PemilikController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request ,$id)
     {
         //
         // $kelas = Kelas::all(); //mendapatkan data dari tabel kelas
-        return view('Pemilik.edit');
+        $alat = Alat::with('nama_pemilik')->where('id_pemilik', $id)->first();
+        // $pemilik = Pemilik::all(); //mendapatkan data dari tabel kelas
+        return view('Pemilik.alatEdit');
     }
 
     /**
@@ -156,7 +137,7 @@ class PemilikController extends Controller
    
     $request->validate([
        'pemilik' => 'required',
-       'nama_Kamera' => 'required', 
+       'nama_alat' => 'required', 
        'kategori' => 'required',
        'speksifikasi' => 'required',
        'gambar' => 'image|file|max:1024',
@@ -165,16 +146,16 @@ class PemilikController extends Controller
 
     ]);
     $alat = new Alat;
-    $alat->id_pemilik = $request->get('pemilik');
+    $alat->pemilik = $request->get('pemilik');
     $alat->kategori = $request->get('kategori');
-    $alat->nama_alat = $request->get('nama_kamera');
+    $alat->nama_alat = $request->get('nama_alat');
     $alat->speksifikasi = $request->get('speksifikasi');
     $alat->gambar = $image_name;
     $alat->harga = $request->get('harga');
     $alat->stok = $request->get('stok');
     $alat->save();
 
-    return redirect()->route('Pemilik.alat')
+    return redirect()->route('alat.index')
     ->with('success', 'Alat Kamera Berhasil Ditambahkan');
 
     }
@@ -196,4 +177,5 @@ class PemilikController extends Controller
     return redirect()->route('alat.index')->with('success', 'alat berhasil dihapus');
 
     }
+    
 }

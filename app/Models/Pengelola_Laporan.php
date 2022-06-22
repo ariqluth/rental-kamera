@@ -13,12 +13,12 @@ class Pengelola_Laporan extends Model
     protected $primaryKey = 'id'; // Memanggil isi DB Dengan primarykey
 
     protected $fillable = [
-        'Customer',
-        'Pemilik',
-        'Admin',
-        'Pengembalian',
-        'Pengembalian',
-        'Bukti_laporan',
+        'customer',
+        'pemilik',
+        'admin',
+        'pengembalian',
+        'pengembalian',
+        'bukti_laporan',
            
  ];
 

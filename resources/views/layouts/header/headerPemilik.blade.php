@@ -37,9 +37,9 @@
 <div class="wrapper">
 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
+  {{-- <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="90" width="90">
-  </div>
+  </div> --}}
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-dark">
@@ -138,7 +138,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{Route('disewa')}}" class="nav-link">
+            <a href="{{route('alat.index')}}" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                Disewakan Alat
@@ -174,7 +174,7 @@
  </script>
  <!-- Bootstrap 4 -->
  <script src="{{asset('assets/plugins2/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
- <!-- ChartJS -->
+ {{-- <!-- ChartJS -->
  <script src="{{asset('assets/plugins2/chart.js/Chart.min.js')}}"></script>
  <!-- Sparkline -->
  <script src="{{asset('assets/plugins2/sparklines/sparkline.js')}}"></script>
@@ -212,7 +212,7 @@
 <script src="{{asset('assets/plugins2/pdfmake/vfs_fonts.js')}}"></script>
 <script src="{{asset('assets/plugins2/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('assets/plugins2/datatables-buttons/js/buttons.print.min.js')}}"></script>
-<script src="{{asset('assets/plugins2/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('assets/plugins2/datatables-buttons/js/buttons.colVis.min.js')}}"></script> --}}
 <!-- AdminLTE App -->
 <!-- Page specific script -->
 <script>
@@ -231,5 +231,6 @@
       "responsive": true,
     });
   });
+  </script>
 </body>
 </html>

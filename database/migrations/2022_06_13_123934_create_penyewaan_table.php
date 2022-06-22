@@ -14,11 +14,11 @@ class CreatePenyewaanTable extends Migration
     public function up()
     {
         Schema::create('penyewaan', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('id_customer');
-            $table->foreignId('id_pemilik');
-            $table->foreignId('id_alat');
-            $table->string('tanggal_sewa');
+            $table->bigIncrements('id');
+            $table->integer('id_customer');
+            $table->integer('id_pemilik');
+            $table->integer('id_alat');
+            $table->date('tanggal_sewa');
             $table->string('total_bayar');
             $table->string('kamera_disewa');
             $table->string('jumlah_disewa');

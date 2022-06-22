@@ -12,13 +12,13 @@ class Pembayaran extends Model
     protected $primaryKey = 'id'; // Memanggil isi DB Dengan primarykey
 
     protected $fillable = [
-        'Customer',
-        'Pemilik',
-        'Tanggal_Pembayaran',
-        'Jumlah_Pembayaran',
-        'Bank',
-        'Bank_tujuan',
-        'Nama_Kamera',
+        'customer',
+        'pemilik',
+        'tanggal_Pembayaran',
+        'jumlah_Pembayaran',
+        'bank',
+        'bank_tujuan',
+        'nama_Kamera',
         
            
  ];

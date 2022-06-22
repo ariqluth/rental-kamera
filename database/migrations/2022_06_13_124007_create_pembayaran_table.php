@@ -14,11 +14,11 @@ class CreatePembayaranTable extends Migration
     public function up()
     {
         Schema::create('pembayaran', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('id_customer');
-            $table->foreignId('id_sewa');
-            $table->foreignId('id_pemilik');
-            $table->string('tanggal_bayar');
+            $table->bigIncrements('id');
+            $table->Integer('id_customer');
+            $table->Integer('id_sewa');
+            $table->Integer('id_pemilik');
+            $table->date('tanggal_bayar');
             $table->string('jumlah');
             $table->string('bank');
             $table->string('bank_tujuan');

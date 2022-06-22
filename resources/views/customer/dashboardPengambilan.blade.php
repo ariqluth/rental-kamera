@@ -38,6 +38,7 @@
                     <th>bukti pembayaran</th>
                     <th>Tanggal pengambilan</th>
                     <th>Tanggal pengembilan</th>
+                    <th>Status</th>
                     <th> Aksi</th>
                   </tr>
                   </thead>
@@ -49,7 +50,7 @@
                     </td>
                     <td>Win 95+</td>
                     <td> 4</td>
-                   
+                    <td> 4</td>
                     <td><a href="{{Route('disewaDetail')}}" class="btn btn-primary">Detail</a> </td>
                   </tr>
                 

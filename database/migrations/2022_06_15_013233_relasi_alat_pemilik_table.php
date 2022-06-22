@@ -13,7 +13,11 @@ class RelasiAlatPemilikTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('alat', function (Blueprint $table) {
+        $table->dropColumn('pemilik'); //menghapus kolom kelas
+        $table->unsignedBigInteger('users_id')->nullable(); //menambah kolom kelas_id
+        $table->foreign('users_id')->references('id')->on('users'); //mengatur foreign key
+        });
     }
 
     /**
@@ -23,6 +27,9 @@ class RelasiAlatPemilikTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('alat', function (Blueprint $table) {
+            $table->string('pemilik');
+            $table->dropForeign(['users_id']);
+        });
     }
 }

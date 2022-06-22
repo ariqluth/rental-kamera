@@ -7,11 +7,20 @@
 <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
  <!-- Favicon-->
- <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+ <link rel="icon" type="image/x-icon" href="{{asset('assets/favicon.ico')}}" />
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href="{{asset('assets/plugins2/fontawesome-free/css/all.min.css')}}">
+   <!-- Ionicons -->
+   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+   
  <!-- Bootstrap icons-->
  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
+
+
+<!--  -->
+
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -52,6 +61,25 @@
 				
 				</ul>
 			</li>
+			<li class="dropdown" style="padding-left: 800px">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fas fa-user" style="width:10px; height: 10px;"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          
+                  <div class="dropdown-divider"></div>
+                  <a href="{{Route('login')}}" class="dropdown-item">
+                    <i class="fas fa-envelope mr-2"></i> login
+                  </a>
+                
+                  <div class="dropdown-divider"></div>
+                  <a href="{{Route('register')}}" class="dropdown-item">
+                    <i class="fas fa-file mr-2"></i> Register
+                   
+                  </a>
+				</div>
+                 
+              </li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li>

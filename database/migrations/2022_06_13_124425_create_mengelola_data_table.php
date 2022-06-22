@@ -15,8 +15,8 @@ class CreateMengelolaDataTable extends Migration
     {
         Schema::create('mengelola_data', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_pemilik');
-            $table->foreignId('id_admin');
+            $table->integer('id_pemilik');
+            $table->integer('id_admin');
             $table->string('jumlah_pembelian');
             $table->string('rating');
             $table->string('data_lapor');

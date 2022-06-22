@@ -12,14 +12,14 @@ class Penyewaan extends Model
     protected $primaryKey = 'id'; // Memanggil isi DB Dengan primarykey
 
     protected $fillable = [
-        'Customer',
-        'Pemilik',
-        'Kondisi_Kamera',
-        'Tanggal_Sewa',
-        'Total_disewa',
-        'Kamera_disewa',
-        'Jumlah_disewa',
-        'ALamat_tujuan',
+        'customer',
+        'pemilik',
+        'kondisi_Kamera',
+        'tanggal_Sewa',
+        'total_disewa',
+        'kamera_disewa',
+        'jumlah_disewa',
+        'aLamat_tujuan',
         
            
  ];

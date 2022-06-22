@@ -13,12 +13,12 @@ class Pengembalian extends Model
     protected $primaryKey = 'id'; // Memanggil isi DB Dengan primarykey
 
     protected $fillable = [
-        'Bukti_Pengambilan',
-        'Bukti_Pembayaran',
-        'Bukti_Sewa',
-        'Customer',
-        'Pemilik',
-        'Admin',
+        'bukti_Pengambilan',
+        'bukti_Pembayaran',
+        'bukti_Sewa',
+        'customer',
+        'pemilik',
+        'admin',
         'tanggal_Pengembalian' 
            
  ];

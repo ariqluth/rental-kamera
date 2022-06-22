@@ -14,13 +14,13 @@ class CreatePengembalianTable extends Migration
     public function up()
     {
         Schema::create('pengembalian', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('id_ambil');
-            $table->foreignId('id_bayar');
-            $table->foreignId('id_sewa');
-            $table->foreignId('id_customer');
-            $table->foreignId('id_pemilik');
-            $table->foreignId('id_admin');
+            $table->bigIncrements('id');
+            $table->Integer('id_ambil');
+            $table->Integer('id_bayar');
+            $table->Integer('id_sewa');
+            $table->Integer('id_customer');
+            $table->Integer('id_pemilik');
+            $table->Integer('id_admin');
             $table->date('tgl_pengembalian');
             $table->string('disewa_kamera');
             $table->timestamps();

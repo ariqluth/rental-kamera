@@ -21,7 +21,6 @@
 
     <!-- Main content -->
     <form method="post" action="{{ route('alat.store') }}" id="myForm" enctype="multipart/form-data">
- 
       @csrf
     <section class="content">
       <div class="row">
@@ -39,7 +38,7 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">Nama kamera</label>
-                <input type="text" id="namakamera" class="form-control" name="namakamera">
+                <input type="text" id="nama_alat" class="form-control" name="nama_alat">
               </div>
               <div class="form-group">
                 <label for="inputDescription">Speksifikasi</label>
@@ -56,6 +55,10 @@
                 </select>
               </div>
               <div class="form-group">
+                <label for="image">Foto</label>
+                <input type="file" name="image" class="form-control" id="image"  >
+            </div>
+              <div class="form-group">
                 <label for="inputClientCompany">harga</label>
                 <input type="text" id="harga" name="harga" class="form-control">
               </div>
@@ -63,7 +66,24 @@
                 <label for="inputProjectLeader">stok</label>
                 <input type="text" id="stok" name="stok" class="form-control">
               </div>
+              {{-- <div class="form-group" >
+                <label for="inputProjectLeader">Pemilik</label>
+                <input type="text" id="pemilik" name="pemilik" class="form-control" value=" " disabled>
+              </div> --}}
+
+              <div class="form-group">
+                <label for="Kelas">Pemilik</label>
+                <select class="custom-select" id="pemilik" name="pemilik">
+                    @foreach($pemilik as $plk)
+                    <option value="{{ $plk->id }}">{{ $plk->name }}</option>
+                    @endforeach
+                </select>
             </div>
+              {{-- <div class="form-group">
+                <label for="inputProjectLeader">Pemilik</label>
+                <input type="text" id="pemilik" name="pemilik" class="form-control">
+              </div>
+            </div> --}}
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
@@ -72,8 +92,8 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <a href="{{Route('disewa')}}" class="btn btn-secondary">Cancel</a>
-          <input type="submit" value="Create new Project" class="btn btn-success float-right">
+          <a href="{{Route('alat.index')}}" class="btn btn-secondary">Cancel</a>
+          <button type="submit" class="btn btn-primary" id="submit">Submit</button>
         </div>
       </div>
     </section>

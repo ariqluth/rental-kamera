@@ -42,6 +42,7 @@
                     <th>Tanggal</th>
                     <th>Tanggal jatuh tempo</th>
                     <th>Gambar</th>
+                    <th>status</th>
                     <th> Aksi</th>
                   </tr>
                   </thead>
@@ -53,6 +54,7 @@
                     </td>
                     <td>Win 95+</td>
                     <td> 4</td>
+                    <td>X</td>
                     <td>X</td>
                     <td>X</td>
                     <td>X</td>

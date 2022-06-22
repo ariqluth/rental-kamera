@@ -26,8 +26,8 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-               <a href="{{Route('disewaTambah')}}" class="btn-lg btn-success float-sm-right">Tambahkan</a>
-               <a href="{{Route('kondisi')}}" class="btn-lg btn-secondary float-right" style="margin-right:20px">Tambahkan Kondisi Kamera</a>
+               <a href="{{route('alat.create')}}" class="btn-lg btn-success float-sm-right">Tambahkan</a>
+               <a href="{{route('kondisi')}}" class="btn-lg btn-secondary float-right" style="margin-right:20px">Tambahkan Kondisi Kamera</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -46,20 +46,22 @@
                   </tr>
                   </thead>
                   <tbody>
+                    @foreach ($alat as $alt)
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td><a href="{{Route('disewaDetail')}}" class="btn btn-primary">Detail</a> <a href="{{Route('disewaDetail')}}" class="btn btn-danger">Hapus</a> <a href="{{Route('disewaEdit')}}"class="btn btn-warning">Update</a> </td>
+
+                    <td>no++</td>
+                    <td>{{$alt->nama_alat}}</td>
+                    <td>{{$alt->speksifikasi}}</td>
+                    <td>{{$alt->harga}}</td>
+                    <td>{{$alt->stok}}</td>
+                    <td></td>
+                    <td>{{$alt->users_id}}</td>
+                    <td><img src="{{asset('storage/public/images/'.$alt->image)}}"  width="100px" height="100px"></td>
+                    <td><a href="#" class="btn btn-primary">Detail</a> <a href="#" class="btn btn-danger">Hapus</a> <a href="#"class="btn btn-warning">Update</a> </td>
+                    @csrf
+                    @method('DELETE')
                   </tr>
-                
+                @endforeach
                   </tfoot>
                 </table>
               </div>

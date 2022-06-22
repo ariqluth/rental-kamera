@@ -12,11 +12,11 @@ class Pengelola_Data_Pelanggan extends Model
     protected $primaryKey = 'id'; // Memanggil isi DB Dengan primarykey
 
     protected $fillable = [
-        'Pemilik',
-        'Admin',
-        'Jumlah_pembelian',
-        'Rating',
-        'Data_Laporan',
+        'pemilik',
+        'admin',
+        'jumlah_pembelian',
+        'rating',
+        'data_laporan',
            
  ];
 

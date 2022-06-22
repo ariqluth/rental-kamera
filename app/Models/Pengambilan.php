@@ -17,11 +17,11 @@ class Pengambilan extends Model
  * @var array
  */
     protected $fillable = [
-        'Bukti_Pembayaran',
-        'Customer',
-        'Pemilik',
-        'Admin',
-        'tanggal_Pengambilan',
+        'bukti_pembayaran',
+        'customer',
+        'pemilik',
+        'admin',
+        'tanggal_pengambilan',
         
            
  ];

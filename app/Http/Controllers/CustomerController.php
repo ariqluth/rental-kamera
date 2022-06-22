@@ -60,7 +60,13 @@ class CustomerController extends Controller
         return view('customer.dashboardPengembalian');
     }
 
+    public function detailProduct() {
+        return view('pengunjung.detailproduct');
+    }
 
+    public function detailInvoice() {
+        return view('customer.transaksipembayaran');
+    }
 
 
     /**

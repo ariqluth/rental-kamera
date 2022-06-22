@@ -1,9 +1,10 @@
-@extends('layouts.header.headerCategory')
-@section('category')
+@extends('layouts.header.headerCustomer2')
+@section('dashboard')
 
-<div class="container mt-20" style="margin-top:100px">
+
+<div class="container mt-5">
   <div class="row">
-   
+    <div class="col-md-12"> HOME &GT SHOP &GT WOMEN &GT WOMEN'S DRESS </div>
   </div>
 </div>
 <div class="container">
@@ -72,12 +73,12 @@
    
    <div class="row mt-5">
    	<div class="col-md-3">
-   		<div class="card-productDetail">
-   			<img class="card-productDetail-img-top img-fluid" src="c61.jpg">
+   		<div class="card">
+   			<img class="card-img-top img-fluid" src="c61.jpg">
    			<div class="card-title">
    				<h4>GYM Tops</h4>
    			</div> 
-   			<div class="card-productDetail-text">
+   			<div class="card-text">
    				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae fugiat et voluptate sunt officia vero molestias.<br/><br/>
    				<a class="btn btn-success text-light"> Buy Now</a> &nbsp; <a class="btn btn-danger text-light"><i class="fa fa-cart-plus" aria-hidden="true"></i>  Add To Cart</a> <br/><br/>
    			</div>
@@ -86,24 +87,26 @@
    	
    	
    	<div class="col-md-3">
-   		<div class="card-productDetail">
-   			<img class="card-productDetail-img-top img-fluid" src="c94.jpg">
-   			<div class="card-productDetail-title">
+   		<div class="card">
+   			<img class="card-img-top img-fluid" src="c94.jpg">
+   			<div class="card-title">
    				<h4>GYM Tops</h4>
    			</div> 
-   			<div class="card-productDetail-text">
+   			<div class="card-text">
    				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae fugiat et voluptate sunt officia vero molestias.<br/><br/>
    				<a class="btn btn-success text-light"> Buy Now</a> &nbsp; <a class="btn btn-danger text-light"><i class="fa fa-cart-plus" aria-hidden="true"></i>  Add To Cart</a> <br/><br/>
    			</div>
    		</div>
    	</div>
+   	
+   	
    	<div class="col-md-3">
-   		<div class="card-productDetail">
-   			<img class="card-productDetail-img-top img-fluid" src="c132.jpg">
-   			<div class="card-productDetail-title">
+   		<div class="card">
+   			<img class="card-img-top img-fluid" src="c132.jpg">
+   			<div class="card-title">
    				<h4>GYM Tops</h4>
    			</div> 
-   			<div class="card-productDetail-text">
+   			<div class="card-text">
    				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae fugiat et voluptate sunt officia vero molestias.<br/><br/>
    				<a class="btn btn-success text-light"> Buy Now</a> &nbsp; <a class="btn btn-danger text-light"><i class="fa fa-cart-plus" aria-hidden="true"></i>  Add To Cart</a> <br/><br/>
    			</div>
@@ -111,18 +114,19 @@
    	</div>
    	
    	<div class="col-md-3">
-   		<div class="card-productDetail-productDetail">
-   			<img class="card-productDetail-img-top img-fluid" src="c172.jpg">
-   			<div class="card-productDetail-title">
+   		<div class="card">
+   			<img class="card-img-top img-fluid" src="c172.jpg">
+   			<div class="card-title">
    				<h4>GYM Tops</h4>
    			</div> 
-   			<div class="card-productDetail-text">
+   			<div class="card-text">
    				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae fugiat et voluptate sunt officia vero molestias.<br/><br/>
    				<a class="btn btn-success text-light"> Buy Now</a> &nbsp; <a class="btn btn-danger text-light"><i class="fa fa-cart-plus" aria-hidden="true"></i>  Add To Cart</a> <br/><br/>
    			</div>
    		</div>
    	</div>
    </div>
+   
    
 </div>
 @endsection
