@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\Alat;
+use App\Models\Detail_Alat;
 use App\Models\Pemilik;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AlatController extends Controller
 {
@@ -25,7 +27,7 @@ class AlatController extends Controller
             return view('Pemilik.alat', ['paginate'=>$alat]);
         } else {
             //fungsi eloquent menampilkan data menggunakan pagination
-            $alat = Alat::with('pemilik')->latest()->get(); //mengambil semua isi tabel
+            $alat = Alat::with('pemilik','detail_kamera')->latest()->get(); //mengambil semua isi tabel
             $alat= Alat::orderBy('id','asc')->paginate(3);
             return view('Pemilik.alat',['alat' => $alat ,'paginate'=>$alat]);
         }
@@ -40,7 +42,8 @@ class AlatController extends Controller
     public function create()
     {
         $pemilik = Pemilik::all();
-        return view('Pemilik.alatTambah', ['pemilik' => $pemilik]);
+        $detail = Detail_Alat::all();
+        return view('Pemilik.alatTambah', ['pemilik' => $pemilik , 'detail' => $detail]);
     }
 
     /**
@@ -66,6 +69,7 @@ class AlatController extends Controller
        'harga' => 'required',
        'stok' => 'required',
        'pemilik' => 'required',
+       'kondisi' => 'required',
 
     ]);
     $alat = new Alat;
@@ -76,6 +80,7 @@ class AlatController extends Controller
     $alat->harga = $request->get('harga');
     $alat->stok = $request->get('stok');
     $alat->users_id = $request->get('pemilik');
+    $alat->detailAlat_id = $request->get('kondisi');
     // dd($alat)->all;
     $alat->save();
 
@@ -109,13 +114,14 @@ class AlatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request ,$id)
+    public function edit( $id)
     {
         //
-        // $kelas = Kelas::all(); //mendapatkan data dari tabel kelas
-        $alat = Alat::with('nama_pemilik')->where('id_pemilik', $id)->first();
+        $alat = Alat::with('pemilik','detail_kamera')->where('id','id', $id)->first(); 
+        $pemilik = Pemilik::all();
+        $detail = Detail_Alat::all();
         // $pemilik = Pemilik::all(); //mendapatkan data dari tabel kelas
-        return view('Pemilik.alatEdit');
+        return view('Pemilik.alatEdit', compact('alat', 'pemilik', 'detail'));
     }
 
     /**
@@ -127,36 +133,41 @@ class AlatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-       // return $request;
-       if ($request->file('image')) {
-        $image_name = $request->file('image')->store('images', 'public');
-    }
-
+       
  //melakukan validasi data
    
     $request->validate([
-       'pemilik' => 'required',
-       'nama_alat' => 'required', 
-       'kategori' => 'required',
-       'speksifikasi' => 'required',
-       'gambar' => 'image|file|max:1024',
-       'harga' => 'required',
-       'stok' => 'required',
-
+        'nama_alat' => 'required', 
+        'kategori' => 'required',
+        'speksifikasi' => 'required',
+        'gambar' => 'image|file|max:1024',
+        'harga' => 'required',
+        'stok' => 'required',
+        'pemilik' => 'required',
+        'kondisi' => 'required',
     ]);
-    $alat = new Alat;
-    $alat->pemilik = $request->get('pemilik');
+
+    $alat = Alat::with('pemilik')->where('id', $id)->first();
+    // validasi foto jika foto lama akan dihapus / diganti
+    if ($alat->gambar && file_exists(storage_path('app/public/' . $alat->gambar))) {
+        Storage::delete('public/' . $alat->gambar);  
+
+        
+    }
+    $image_name = $request->file('image')->store('images', 'public');
+
     $alat->kategori = $request->get('kategori');
     $alat->nama_alat = $request->get('nama_alat');
     $alat->speksifikasi = $request->get('speksifikasi');
     $alat->gambar = $image_name;
     $alat->harga = $request->get('harga');
     $alat->stok = $request->get('stok');
+    $alat->users_id = $request->get('pemilik');
+    $alat->detaiAlat_id = $request->get('kondisi');
     $alat->save();
 
     return redirect()->route('alat.index')
-    ->with('success', 'Alat Kamera Berhasil Ditambahkan');
+    ->with('success', 'Alat Kamera Berhasil Diupdate');
 
     }
 
@@ -168,14 +179,13 @@ class AlatController extends Controller
      */
     public function destroy($id)
     {
-        // $mahasiswa = Mahasiswa::findOrFail($nim);
+        $alat = Alat::findOrFail($id);
 
-        // if( Storage::delete('public/' . $mahasiswa->featured_image)) {
-        //   $mahasiswa->delete();  
-    // }
-
-    return redirect()->route('alat.index')->with('success', 'alat berhasil dihapus');
-
+        if( Storage::delete('public/' . $alat->gambar)) {
+          $alat->delete();  
+        }
+  
+        return redirect()->route('alat.index')->with('success', 'alat berhasil dihapus');
     }
     
 }

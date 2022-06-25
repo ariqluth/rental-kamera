@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Alat;
+use App\Http\Controllers\Payment\TripayController;
 
-class Pengambilan extends Controller
+class PembayaranController extends Controller
 {
     //
     /**
@@ -81,5 +83,12 @@ class Pengambilan extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function checkout(Alat $alat){
+        $tripay = new TripayController();
+        $channels = $tripay->getPaymentChannels();
+        // dd($channels, 'abc');
+        return view('customer.pembayaran', compact('alat', 'channels'));
     }
 }

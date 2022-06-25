@@ -15,8 +15,8 @@ class CreateDetailAlatTable extends Migration
     {
         Schema::create('detail_alat', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('alat');
             $table->string('kondisi_alat');
+            $table->string('sub_nama');
             $table->timestamps();
         });
     }

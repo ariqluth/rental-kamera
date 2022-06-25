@@ -25,10 +25,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <div class="callout callout-info">
-              <h5><i class="fas fa-info"></i> Note:</h5>
-              This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.
-            </div>
+            
 
             <!-- Main content -->
             <div class="invoice p-3 mb-3">
@@ -130,11 +127,28 @@
                 <!-- accepted payments column -->
                 <div class="col-6">
                   <p class="lead">Payment Methods:</p>
-                  <img src="../../dist/img/credit/visa.png" alt="Visa">
-                  <img src="../../dist/img/credit/mastercard.png" alt="Mastercard">
-                  <img src="../../dist/img/credit/american-express.png" alt="American Express">
-                  <img src="../../dist/img/credit/paypal2.png" alt="Paypal">
+                  <div class="col-12 table-responsive">
+                    @foreach ($channels as $chl)
+                    {{-- buat status jika payment yang aktif di merchant --}}
+                    @if ($chl->active)
+                    {{-- untuk menuju payment --}}
+                    <form action="{{route('transaksi.store')}}" method="post" enctype="multipart/form">
+                      @csrf
+                      <input type="hidden" name="id" value="{{$alat->id}}">
+                      <input type="hidden" name="method" value="{{$chl->code}}">
+                      <button type="submit" class="bg-white items-center">
+                        <div>
 
+                          <img src="{{asset('storage/bank/' .$chl->code.'.png')}} " width="100" height="50" >
+                          <p class="mt-3 text-xs text-grey-600">Pay With {{$chl->name}}</p>
+                          
+                        </div>
+                      </button>
+                      {{-- memberikan nama --}}
+                    </form>
+                    @endif
+                    @endforeach
+                  </div>
                   <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
                     Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem
                     plugg

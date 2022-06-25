@@ -14,7 +14,7 @@ class CreatePengelolaLaporanTable extends Migration
     public function up()
     {
         Schema::create('pengelola_laporan', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->Integer('id_bayar');
             $table->Integer('id_customer');
             $table->Integer('id_pemilik');

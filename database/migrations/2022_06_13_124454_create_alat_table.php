@@ -14,8 +14,9 @@ class CreateAlatTable extends Migration
     public function up()
     {
         Schema::create('alat', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('pemilik');
+            $table->string('kondisi');
             $table->string('kategori');
             $table->string('nama_alat');
             $table->string('speksifikasi');

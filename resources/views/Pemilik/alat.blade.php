@@ -27,7 +27,7 @@
             <div class="card">
               <div class="card-header">
                <a href="{{route('alat.create')}}" class="btn-lg btn-success float-sm-right">Tambahkan</a>
-               <a href="{{route('kondisi')}}" class="btn-lg btn-secondary float-right" style="margin-right:20px">Tambahkan Kondisi Kamera</a>
+               <a href="{{route('kondisi-kamera.index')}}" class="btn-lg btn-secondary float-right" style="margin-right:20px">Tambahkan Kondisi Kamera</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -40,30 +40,38 @@
                     <th>Harga</th>
                     <th>Stok</th>
                     <th>Kondisi</th>
+                    <th>Kategori</th>
                     <th>Pemilik kamera</th>
                     <th>Gambar</th>
                     <th> Aksi</th>
                   </tr>
                   </thead>
                   <tbody>
+                    <?php 
+                      $i = 0;
+                    ?>
                     @foreach ($alat as $alt)
                   <tr>
 
-                    <td>no++</td>
+                    <td>{{++$i}}</td>
                     <td>{{$alt->nama_alat}}</td>
                     <td>{{$alt->speksifikasi}}</td>
                     <td>{{$alt->harga}}</td>
                     <td>{{$alt->stok}}</td>
-                    <td></td>
+                    <td>{{$alt->detailAlat_id}} </td>
+                    <td>{{$alt->kategori}}</td>
                     <td>{{$alt->users_id}}</td>
-                    <td><img src="{{asset('storage/public/images/'.$alt->image)}}"  width="100px" height="100px"></td>
-                    <td><a href="#" class="btn btn-primary">Detail</a> <a href="#" class="btn btn-danger">Hapus</a> <a href="#"class="btn btn-warning">Update</a> </td>
+                    <td><img src="{{asset('storage/'.$alt->gambar)}}"  width="100px" height="100px"></td>
+                    <td><a href="#" class="btn btn-primary">Detail</a> <a href="{{route('alat.edit',$alt->id)}}"class="btn btn-warning">Update</a> 
+                      <button type="submit" class="btn btn-sm btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Delete</button>
+                    </td>
                     @csrf
                     @method('DELETE')
                   </tr>
                 @endforeach
                   </tfoot>
                 </table>
+                {{ $alat->links('pagination::bootstrap-4')}}
               </div>
               <!-- /.card-body -->
             </div>
@@ -88,5 +96,26 @@
 </div>
 <!-- ./wrapper -->
 
+ {{-- konfirmasi delete  --}}
+
+ <script type="text/javascript">
+  $('.show_confirm').click(function(event) {
+     var form =  $(this).closest("form");
+    
+     event.preventDefault();
+     swal({
+         title: `Are you sure you want to delete this record?`,
+         text: "If you delete this, it will be gone forever.",
+         icon: "warning",
+         buttons: true,
+         dangerMode: true,
+     })
+     .then((willDelete) => {
+       if (willDelete) {
+         form.submit();
+       }
+     });
+ });
+   </script>
 
 @endsection

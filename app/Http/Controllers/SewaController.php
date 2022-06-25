@@ -14,6 +14,7 @@ class SewaController extends Controller
     public function index()
     {
         //
+        
     }
 
     /**

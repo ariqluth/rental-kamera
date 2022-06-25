@@ -79,11 +79,14 @@
                     @endforeach
                 </select>
             </div>
-              {{-- <div class="form-group">
-                <label for="inputProjectLeader">Pemilik</label>
-                <input type="text" id="pemilik" name="pemilik" class="form-control">
-              </div>
-            </div> --}}
+            <div class="form-group">
+              <label for="Kelas">Kondisi</label>
+              <select class="custom-select" id="kondisi" name="kondisi">
+                  @foreach($detail as $dtl)
+                  <option value="{{ $dtl->id }}">{{ $dtl->kondisi_alat }}</option>
+                  @endforeach
+              </select>
+          </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->

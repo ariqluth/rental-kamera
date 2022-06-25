@@ -27,7 +27,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Pengambilan Sewa</h3>
-               <a href="{{Route('disewaTambah')}}" class="btn-lg btn-secondary float-sm-right">Tambahkan</a>
+              
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -53,7 +53,7 @@
                     <td> 4</td>
                     <td>X</td>
                     <td>X</td>
-                    <td><a href="{{Route('disewaDetail')}}" class="btn btn-primary">Detail</a> <a href="{{Route('disewaDetail')}}" class="btn btn-danger">Hapus</a> <a href="{{Route('disewaEdit')}}"class="btn btn-warning">Update</a> </td>
+                    <td><a href="#" class="btn btn-primary">Detail</a>  </td>
                   </tr>
                 
                   </tfoot>
@@ -65,7 +65,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Pengembalian Sewa</h3>
-                 <a href="{{Route('disewaTambah')}}" class="btn-lg btn-secondary float-sm-right">Tambahkan</a>
+                
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -93,7 +93,7 @@
                       <td>X</td>
                       <td>X</td>
                       <td>X</td>
-                      <td><a href="{{Route('disewaDetail')}}" class="btn btn-primary">Detail</a> <a href="{{Route('disewaDetail')}}" class="btn btn-danger">Hapus</a> <a href="{{Route('disewaEdit')}}"class="btn btn-warning">Update</a> </td>
+                      <td><a href="" class="btn btn-primary">Detail</a></td>
                     </tr>
                   
                     </tfoot>

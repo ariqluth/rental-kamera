@@ -20,7 +20,7 @@
     </section>
 
     <!-- Main content -->
-    <form method="post" action="{{ route('alat.update') }}" id="myForm" enctype="multipart/form-data">
+    <form method="post" action="{{ route('alat.update',$alat->id) }}" id="myForm" enctype="multipart/form-data">
       @csrf
       @method('PUT')
     <section class="content">
@@ -39,16 +39,16 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">Nama kamera</label>
-                <input type="text" id="namakamera" class="form-control" name="namakamera">
+                <input type="text" id="nama_alat" class="form-control" name="nama_alat" value="{{ $alat->nama_alat }}">
               </div>
               <div class="form-group">
                 <label for="inputDescription">Speksifikasi</label>
-                <textarea id="speksifikasi" class="form-control" rows="4" name="speksifikasi" ></textarea>
+                <textarea id="speksifikasi" class="form-control" rows="4" name="speksifikasi" value="{{ $alat->speksifikasi }}" ></textarea>
               </div>
               <div class="form-group">
                 <label for="inputStatus">kategori</label>
                 <select id="kategori" class="form-control custom-select" name="kategori">
-                  <option selected >Select one</option>
+                  <option  value="{{ $alat->kategori }}"selected > </option>
                   <option>DSLR</option>
                   <option>Mirrorless</option>
                   <option>Action Camera</option>
@@ -56,13 +56,35 @@
                 </select>
               </div>
               <div class="form-group">
+                <label for="image">Foto</label>
+                <input type="file" name="image" class="form-control" id="image" value="{{ $alat->gambar }}"  >
+                @if($alat->gambar)
+                <img width="150px" src="{{asset('storage/'.$alat->gambar)}}"  >
+                @else
+                <img class="img-preview img-fluid">
+                @endif
+              </div>
+              <div class="form-group">
                 <label for="inputClientCompany">harga</label>
-                <input type="text" id="harga" name="harga" class="form-control">
+                <input type="text" id="harga" name="harga" class="form-control" value="{{ $alat->harga }}" >
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">stok</label>
-                <input type="text" id="stok" name="stok" class="form-control">
+                <input type="text" id="stok" name="stok" class="form-control"  value="{{ $alat->stok }}">
               </div>
+              {{-- <div class="form-group" >
+                <label for="inputProjectLeader">Pemilik</label>
+                <input type="text" id="pemilik" name="pemilik" class="form-control" value=" " disabled>
+              </div> --}}
+
+              <div class="form-group">
+                <label for="Kelas">Pemilik</label>
+                <select class="custom-select" id="pemilik" name="pemilik">
+                    @foreach($pemilik as $plk)
+                    <option value="{{ $plk->id }}">{{ $plk->name }}</option>
+                    @endforeach
+                </select>
+            </div>
             </div>
             <!-- /.card-body -->
           </div>
@@ -72,7 +94,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <a href="{{Route('disewa')}}" class="btn btn-secondary">Cancel</a>
+          <a href="#" class="btn btn-secondary">Cancel</a>
           <input type="submit" value="Save Change" class="btn btn-success float-right">
         </div>
       </div>

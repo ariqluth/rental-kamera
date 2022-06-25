@@ -7,6 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PemilikController;
 use App\Http\Controllers\AlatController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\TesterController;
 
@@ -62,7 +64,7 @@ Route::resource('/pemilik/alat', '\App\Http\Controllers\AlatController');
 
 
 
-Route::get('/pemilik/kondisi-kamera', [PemilikController::class, 'kondisikamera'])->name('kondisi');
+Route::resource('/pemilik/kondisi-kamera', KondisiAlatController::class);
 // 
 Route::get('/pemilik/kelolaPelanggan', [PemilikController::class, 'dataPelanggan'])->name('dataPelanggan');
 // 
@@ -96,9 +98,10 @@ Route::get('/about', [App\Http\Controllers\CustomerController::class, 'about'])-
 
 Route::get('/detailproduct', [CustomerController::class, 'detailProduct'])->name('detailProduct');
 
-Route::get('/detail-invoce', [CustomerController::class, 'detailInvoice'])->name('detailInvoice');
+Route::get('/detail-invoce', [PembayaranController::class, 'checkout'])->name('checkout');
 
-// login hak hakAkses
+// transaksi tripay data
+Route::post('transaksi', [TransaksiController::class, 'store'])->name('transaksi.store');
 
 // tester crude
 Route::resource('/tester', '\App\Http\Controllers\TesterController');

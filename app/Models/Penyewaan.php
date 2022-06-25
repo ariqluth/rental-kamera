@@ -19,7 +19,7 @@ class Penyewaan extends Model
         'total_disewa',
         'kamera_disewa',
         'jumlah_disewa',
-        'aLamat_tujuan',
+        'alamat_tujuan',
         
            
  ];

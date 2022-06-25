@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTestersTable extends Migration
+class CreateSubdetailTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateTestersTable extends Migration
      */
     public function up()
     {
-        Schema::create('testers', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nama');
-            $table->string('email');
-            $table->string('password');
+        Schema::create('subdetail', function (Blueprint $table) {
+            $table->bigIncrements('id_subDetail');
+            $table->bigInteger('pengambalian_id');
+            $table->bigInteger('pengembalian_id');
+            $table->bigInteger('sewa_id');
+            $table->string('sewa');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateTestersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('testers');
+        Schema::dropIfExists('subdetail');
     }
 }

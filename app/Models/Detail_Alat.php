@@ -14,14 +14,13 @@ class Detail_Alat extends Model
    
     protected $fillable = [
         'kondisi_alat',
+        'sub_nama',
         
         
  ];
 
     public function alat() {
-        return $this->belongsTo(Alat::class, 'id_alat'); //mendefinisikan bahwa model ini terkait dengan tabel mahasiswa
+        return $this->hasOne(Alat::class); //mendefinisikan bahwa model ini terkait dengan tabel mahasiswa
     }
-    public function penyewaan() {
-        return $this->hasOne(Pembayaran::class); //mendefinisikan bahwa model ini terkait dengan tabel mahasiswa
-    }
+    
 }

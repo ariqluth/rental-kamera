@@ -14,7 +14,7 @@ class CreatePemilikTable extends Migration
     public function up()
     {
         Schema::create('pemilik', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('name_pemilik');
             $table->string('email_pemilik');
             $table->string('password_pemilik');

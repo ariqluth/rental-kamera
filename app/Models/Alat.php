@@ -18,7 +18,9 @@ class Alat extends Model
         'speksifikasi',
         'harga',
         'stok',
+        'gambar',
         'pemilik',
+        'kondisi'
 
     ];
 //     public function detailalat() {
@@ -27,4 +29,12 @@ class Alat extends Model
    public function pemilik() {
        return $this->belongsTo(Pemilik::class);
    }
+
+   public function detail_kamera() {
+    return $this->belongsTo(Detail_Alat::class);
+}
+   
+   public function penyewaan() {
+    return $this->hasOne(Pembayaran::class); //mendefinisikan bahwa model ini terkait dengan tabel mahasiswa
+    }
 }

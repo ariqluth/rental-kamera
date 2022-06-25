@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Detail_Alat;
+use Illuminate\Support\Facades\DB;
 
-class Pengambilan extends Controller
+class KondisiAlatController extends Controller
 {
     //
+     //
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +17,8 @@ class Pengambilan extends Controller
      */
     public function index()
     {
-        //
+        $product = Detail_Alat::latest()->paginate(5);
+        return view('Pemilik.kondisiKamera', compact('product'));
     }
 
     /**
@@ -25,6 +29,7 @@ class Pengambilan extends Controller
     public function create()
     {
         //
+        return view('Pemilik.kondisiKameraTambah');
     }
 
     /**
@@ -35,7 +40,21 @@ class Pengambilan extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kondisi_alat' => 'required',
+            'sub_nama' => 'required', 
+         
+           
+    ]);
+    $detail = new Detail_Alat;
+    $detail->kondisi_alat = $request->get('kondisi_alat');
+    $detail->sub_nama = $request->get('sub_nama');
+    $detail->save();
+
+    return redirect()->route('kondisi-kamera.index')
+    ->with('success','Kondisi kamera detail tambahakan successfully');
+
+
     }
 
     /**
@@ -44,10 +63,6 @@ class Pengambilan extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -56,9 +71,11 @@ class Pengambilan extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        $product = DB::table('detail_alat')->where('id', $id)->first();  
+        return view('Pemilik.kondisiKameraUpdate',compact('product'));
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +86,19 @@ class Pengambilan extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'kondisi_alat' => 'required',
+            'sub_nama' => 'required', 
+        ]);
+
+        Detail_Alat::where('id',$id)->update([
+        'kondisi_alat'=>$request->kondisi_alat,
+        'sub_nama'=>$request->sub_nama
+       ]);
+      
+        return redirect()->route('kondisi-kamera.index')
+                        ->with('success','Kondisi kamera detail tambahakan successfully');
+
     }
 
     /**
