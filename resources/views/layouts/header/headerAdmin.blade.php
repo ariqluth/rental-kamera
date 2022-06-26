@@ -94,7 +94,7 @@
           </a>
         
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="{{Route('login')}}" class="dropdown-item">
             <i class="fas fa-file mr-2"></i> logout
            
           </a>
