@@ -103,8 +103,8 @@ class AlatController extends Controller
     public function show($id)
     {
         //
+    $alat = Alat::with('pemilik','detail_kamera')->where('id', $id)->first();
     
-    $alat = Alat::find($id);
     return view('Pemilik.detailAlat', compact('alat'));
     }
 
@@ -124,6 +124,8 @@ class AlatController extends Controller
         return view('Pemilik.alatEdit', compact('alat', 'pemilik', 'detail'));
     }
 
+
+   
     /**
      * Update the specified resource in storage.
      *

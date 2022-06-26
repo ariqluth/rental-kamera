@@ -30,6 +30,11 @@ class Alat extends Model
        return $this->belongsTo(Pemilik::class);
    }
 
+   public function customer() {
+    return $this->belongsTo(Customer::class);
+}
+
+
    public function detail_kamera() {
     return $this->belongsTo(Detail_Alat::class);
 }

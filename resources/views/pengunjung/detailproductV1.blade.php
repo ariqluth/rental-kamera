@@ -1,9 +1,9 @@
-@extends('layouts.header.headerCategory')
-@section('category')
+@extends('layouts.header.headerPengunjung')
+@section('homepage')
 
 <div class="container mt-20" style="margin-top:100px">
   <div class="row">
-   
+   {{-- dashboard original --}}
   </div>
 </div>
 <div class="container">
@@ -24,7 +24,7 @@
         <h1><i class="fa fa-inr" aria-hidden="true"></i> Kategori : {{$alat->kategori}}</hh1>
        
         &nbsp; &nbsp;
-        <h2 class="text-success">Rp. {{$alat->harga}}</h2>
+        <h2 class="text-success">Rp. {{$alat->harga}} hari</h2>
       </div>
      
       <div class="row">
@@ -32,7 +32,7 @@
       <p>{{$alat->speksifikasi}}</p>
       </div>
       <div class="row mt-4">
-        <h3 class="text-info"><i class="fa fa-map-marker" aria-hidden="true"></i></h3>
+        <h3 class="text-info"></h3>
         <p style="font-size: 20px"> &nbsp; Pemilik : {{$alat->users_id}}  </p>
       </div>
       <div class="row mt-4">
@@ -41,29 +41,9 @@
       </div>
       <div class="row mt-4">
       	<h4>Sewa : &nbsp; &nbsp; </h4>
-        <div class="col" style="display:flex; flex-direction: row">
-          @foreach ($channels as $chl)
-          {{-- buat status jika payment yang aktif di merchant --}}
-          @if ($chl->active)
-          {{-- untuk menuju payment --}}
-          <form action="{{route('transaksi.store')}}" method="post" enctype="multipart/form">
-            @csrf
-            <input type="hidden" name="id" value="{{$alat->id}}">
-            <input type="hidden" name="method" value="{{$chl->code}}">
-            <button type="submit" class="bg-white items-center">
-              <div>
-
-                <img src="{{asset('storage/bank/' .$chl->code.'.png')}} " width="100" height="50" >
-                <p class="mt-3 text-xs text-grey-600">Pay With {{$chl->name}}</p>
-                
-              </div>
-            </button>
-            {{-- memberikan nama --}}
-          </form>
-          @endif
-          @endforeach
-        </div>
+       
       	{{-- <a class="btn btn-primary text-light">Pesan Sekarang</a>  --}}
+        <a href="{{route('login')}}"class="btn-lg btn-primary text-light" style="height: 50 px; text-align: center;"> Pesan Sekarang</a>
       </div>
       
       

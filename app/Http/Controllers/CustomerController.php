@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Alat;
+use App\Models\Customer;
+use App\Http\Controllers\Payment\TripayController;
 
 class CustomerController extends Controller
 {
@@ -11,10 +14,45 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __construct()
     {
-        return view('pengunjung.homepage');
+        $this->middleware('auth');
     }
+
+
+
+    public function homepage()
+    {
+        if (request('search')){
+            $alat = Alat::where('nama_alat', 'like', '%'.request('search').'%')
+                                    ->orwhere('kategori', 'like', '%'.request('search').'%')
+                                    ->orwhere('stok', 'like', '%'.request('search').'%')
+                                    ->paginate(5);
+            return view('Pemilik.alat', ['paginate'=>$alat]);
+        } else {
+            //fungsi eloquent menampilkan data menggunakan pagination
+            $alat = Alat::with('pemilik','detail_kamera')->latest()->get(); //mengambil semua isi tabel
+            $alat= Alat::orderBy('id','asc')->paginate(3);
+        }
+        
+        return view('customer.homepage', compact('alat'));
+    }
+
+
+    public function detail($id) {
+        $alat = Alat::with('pemilik','detail_kamera')->where('id', $id)->first();
+        return view('customer.detailproduct', compact('alat'));
+    }
+
+    public function pembayaran($id) {
+        $alat = Alat::with('customer','detail_kamera')->where('id', $id)->first();
+        $tripay = new TripayController();
+        $channels = $tripay->getPaymentChannels();
+        return view('customer.pembayaran', compact('alat', 'channels'));
+    }
+
+
+
 
     public function categoryDSLR() {
         return view('pengunjung.detailDSLR');
@@ -61,14 +99,16 @@ class CustomerController extends Controller
     }
 
     public function detailProduct() {
-        return view('pengunjung.detailproduct');
+        return view('customer.detailproduct');
     }
 
     public function detailInvoice() {
         return view('customer.transaksipembayaran');
     }
 
-
+public function index() {
+   
+}
     /**
      * Show the form for creating a new resource.
      *
@@ -76,7 +116,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -98,7 +138,8 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = Customer::with('alat')->where('id', $id)->first();
+        return view('customer.profile', compact('user'));
     }
 
     /**
@@ -109,7 +150,8 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Customer::with('alat')->where('id', $id)->first();
+        return view('customer.profile', compact('user'));
     }
 
     /**
@@ -121,7 +163,7 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

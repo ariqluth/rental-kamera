@@ -93,10 +93,16 @@
           </a>
         
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> logout
+          <a class="dropdown-item" href="{{ route('logout') }}"
+          onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+           {{ __('Logout') }}
+
+           <form href="#" class="dropdown-item" id="logout-form" action="{{ route('logout') }}" method="POST" >
            
-          </a>
+               @csrf
+           </form>
+       </a>
          
       </li>
     </ul>

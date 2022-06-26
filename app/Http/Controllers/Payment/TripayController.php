@@ -51,23 +51,25 @@ class TripayController extends Controller
         // dd($apiKey, $privateKey, $merchantCode, $merchantRef);
         $amount       = $alat->harga;
         
-        // user login customer yangn menyewa
         $user = auth()->user();
+
+        // user login customer yangn menyewa
+        // $user = auth()->user();
         // manggil methode 
         $data = [
             'method'         => $method,
             'merchant_ref'   => $merchantRef,
             'amount'         => $amount,
-            'customer_name'  => $user->username,
+            'customer_name'  => $user->name,
             'customer_email' => $user->email,
-            'customer_phone' => $user->phone,
+            'customer_phone' => $user->no_hp,
             'order_items'    => [
                 [
                     'name'        => $alat->nama_alat,
                     'price'       => $alat->harga,
                     'quantity'    => 1,
-                    'product_url' => 'https://tokokamu.com/product/nama-produk-1',
-                    'image_url'   => 'https://tokokamu.com/product/nama-produk-1.jpg',
+                    // 'product_url' => 'https://tokokamu.com/product/nama-produk-1',
+                    // 'image_url'   => 'https://tokokamu.com/product/nama-produk-1.jpg',
                 ],
                
                 ],
@@ -95,8 +97,10 @@ class TripayController extends Controller
             
             curl_close($curl);
 
-            dd($response);
-            
+          
+            $response = json_decode($response)->data;
+              dd($response);
+
             return $response ?: $err;
             
             

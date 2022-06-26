@@ -1,17 +1,26 @@
 <!DOCTYPE html><html lang="en">
 <head>
 <link rel="shortcut icon" type="image/x-icon" href="images/icon.png">
-<title>Juragan Kamera - Rental Kamera Termurah di Jogja</title>
+<title>Juragan Kamera - Rental Kamera Termurah di malang</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('css/style1.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
  <!-- Favicon-->
- <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+ <link rel="icon" type="image/x-icon" href="{{asset('assets/favicon.ico')}}" />
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href="{{asset('assets/plugins2/fontawesome-free/css/all.min.css')}}">
+   <!-- Ionicons -->
+   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+   
  <!-- Bootstrap icons-->
  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
+
+
+<!--  -->
+
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -52,30 +61,33 @@
 				
 				</ul>
 			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link" data-toggle="dropdown" href="#">
-				  <i class="fas fa-user"></i>
-				</a>
-				<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-				  <span class="dropdown-item dropdown-header">Profile</span>
-				  <div class="dropdown-divider"></div>
-				  <a href="{{Route('profilpemilik')}}" class="dropdown-item">
-					<i class="fas fa-envelope mr-2"></i> Profile
-				  </a>
-				
-				  <div class="dropdown-divider"></div>
-				  <a class="dropdown-item" href="{{ route('logout') }}"
-				  onclick="event.preventDefault();
-								document.getElementById('logout-form').submit();">
-				   {{ __('Logout') }}
-		
-				   <form href="#" class="dropdown-item" id="logout-form" action="{{ route('logout') }}" method="POST" >
-				   
-					   @csrf
-				   </form>
-			   </a>
-				 
-			  </li>
+			<li class="dropdown" style="padding-left: 800px">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fas fa-user" style="width:10px; height: 10px;"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">Profile</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{Route('profilpemilik')}}" class="dropdown-item">
+                          <i class="fas fa-envelope mr-2"></i> Profile
+                        </a>
+                      
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                         {{ __('Logout') }}
+              
+                         <form href="#" class="dropdown-item" id="logout-form" action="{{ route('logout') }}" method="POST" >
+                         
+                             @csrf
+                         </form>
+                     </a>
+				</div>
+                 
+              </li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li>
@@ -86,8 +98,11 @@
 </div>
 </nav>
 
+@yield('homepage')
+@yield('about')
+@yield('contact')
+@yield('detailproduct')
 
-@yield('category')
 
 <footer class="container-fluid text-center">
     <p>

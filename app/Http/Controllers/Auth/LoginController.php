@@ -56,7 +56,7 @@ class LoginController extends Controller
             if (auth()->user()->hak_akses == 1) {
                 return redirect()->route('pemilik');
             }else{
-                return redirect()->route('home');
+                return redirect()->route('homecustomer');
             }
         }else{
             return redirect()->route('login')

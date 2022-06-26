@@ -24,7 +24,7 @@ use App\Http\Controllers\Auth\TesterController;
 */
 
 Route::get('/', function () {
-    return view('pengunjung.homepage');
+    return view('home');
 });
 
 
@@ -37,7 +37,8 @@ Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/alat/{alat}', [App\Http\Controllers\HomeController::class,'detail'])->name('home.show');
+Route::post('transaksi/product', [HomeController::class, 'store'])->name('transaksi.store');
 // detail category camera
 Route::get('/detail-category-DLSR', [App\Http\Controllers\CustomerController::class, 'categoryDSLR'])->name('categoryDLSR');
 
@@ -49,6 +50,9 @@ Route::get('/detail-category-ActionCamera', [App\Http\Controllers\CustomerContro
 
 // detail category camera
 Route::get('/detail-category-VideoSupport', [App\Http\Controllers\CustomerController::class, 'categoryVideoSupport'])->name('categoryVideoSupport');
+
+// 
+
 
 // dashboard pemilik form
 Route::get('/dashboard-detail', [App\Http\Controllers\PemilikController::class, 'dashboardDetail'])->name('dashboardDetail');
@@ -82,6 +86,11 @@ Route::get('admin/laporan', [AdminController::class, 'datalaporan'])->name('data
 
 
 // Customer 
+Route::get('/customer/home', [CustomerController::class, 'homepage'])->name('homecustomer');
+Route::get('/alat/{alat}', [App\Http\Controllers\CustomerController::class,'detail'])->name('customer.show');
+Route::resource('/customer/profile', '\App\Http\Controllers\CustomerController');
+Route::get('/detail/{alat}', [App\Http\Controllers\CustomerController::class,'pembayaran'])->name('detail.show');
+
 Route::get('/customer/dashboard', [CustomerController::class, 'dashboardDetail'])->name('dashboardDetail');
 Route::get('/customer/profile', [CustomerController::class, 'profile'])->name('profile');
 Route::get('/customer/transaksi', [CustomerController::class, 'dashboardTransaksi'])->name('transaksi');
@@ -96,12 +105,13 @@ Route::get('/contact', [App\Http\Controllers\CustomerController::class, 'contact
 
 Route::get('/about', [App\Http\Controllers\CustomerController::class, 'about'])->name('about');
 
+
 Route::get('/detailproduct', [CustomerController::class, 'detailProduct'])->name('detailProduct');
 
 Route::get('/detail-invoce', [PembayaranController::class, 'checkout'])->name('checkout');
 
 // transaksi tripay data
-Route::post('transaksi', [TransaksiController::class, 'store'])->name('transaksi.store');
+// Route::post('transaksi', [TransaksiController::class, 'store'])->name('transaksi.store');
 
 // tester crude
 Route::resource('/tester', '\App\Http\Controllers\TesterController');

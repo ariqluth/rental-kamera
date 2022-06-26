@@ -1,5 +1,5 @@
 @extends('layouts.header.headerCustomer2')
-@section('dashboard')
+@section('homepage')
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	<!-- Indicators -->
@@ -58,283 +58,76 @@
 			<p>
 				DSLR
 			</p>
-			<a href="{{route('categoryDLSR')}}"><img src="images/a.png" class="img-responsive" style="width:100%" alt="Image"></a>
+			<a href="{{route('categoryDLSR')}}"><img src="{{asset('images/a.png')}}" class="img-responsive" style="width:100%" alt="Image"></a>
 		</div>
 		<div class="col-sm-3">
 			<p>
 				Mirrorless
 			</p>
-			<a href="{{route('categoryMirrorless')}}"><img src="images/b.png" class="img-responsive" style="width:100%" alt="Image"></a>
+			<a href="{{route('categoryMirrorless')}}"><img src="{{asset('images/b.png')}}" class="img-responsive" style="width:100%" alt="Image"></a>
 		</div>
 		<div class="col-sm-3">
 			<p>
 				Action Camera
 			</p>
-			<a href="{{route('categoryActionCamera')}}"><img src="images/c.png" class="img-responsive" style="width:100%" alt="Image"></a>
+			<a href="{{route('categoryActionCamera')}}"><img src="{{asset('images/c.png')}}" class="img-responsive" style="width:100%" alt="Image"></a>
 		</div>
 		<div class="col-sm-3">
 			<p>
 				Video Support
 			</p>
-			<a href="{{route('categoryVideoSupport')}}"><img src="images/e.png" class="img-responsive" style="width:100%" alt="Image"></a>
+			<a href="{{route('categoryVideoSupport')}}"><img src="{{asset('images/e.png')}}" class="img-responsive" style="width:100%" alt="Image"></a>
 		</div>
 	</div>
 	</div>
 	<hr class="style14">
 	{{-- product foto rental --}}
+
 	<section class="py-5">
 		<div class="container px-4 px-lg-5 mt-5">
 			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+				@foreach ($alat as $alt)
 				<div class="col mb-5">
 					<div class="card h-100">
 						<!-- Sale badge-->
-						<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+						<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">{{$alt->detailAlat_id}}</div>
 						<!-- Product image-->
-						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+						<img class="card-img-top" src="{{asset('storage/'.$alt->gambar)}}" alt="..." width="200" height="200" />
 						<!-- Product details-->
 						<div class="card-body p-4">
 							<div class="text-center">
 								<!-- Product name-->
-								<h5 class="fw-bolder">Special Item</h5>
+								<h5 class="fw-bolder">{{$alt->nama_alat}}</h5>
 								<!-- Product reviews-->
-								<div class="d-flex justify-content-center small text-warning mb-2">
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-								</div>
+								<p>Kategori {{$alt->kategori}}</p>
 								<!-- Product price-->
-								<span class="text-muted text-decoration-line-through">$20.00</span>
-								$18.00
+								
+								<p>Rp. {{$alt->harga}}</p>
 							</div>
 						</div>
 						<!-- Product actions-->
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{route('customer.show' , $alt->id)}}">sewa</a></div>
 						</div>
 					</div>
 				</div>
 				{{-- jarak  --}}
-
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Sale badge-->
-						<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-						<!-- Product image-->
-						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">Special Item</h5>
-								<!-- Product reviews-->
-								<div class="d-flex justify-content-center small text-warning mb-2">
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-								</div>
-								<!-- Product price-->
-								<span class="text-muted text-decoration-line-through">$20.00</span>
-								$18.00
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-						</div>
-					</div>
-				</div>
-				{{-- jarak --}}
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Sale badge-->
-						<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-						<!-- Product image-->
-						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">Special Item</h5>
-								<!-- Product reviews-->
-								<div class="d-flex justify-content-center small text-warning mb-2">
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-								</div>
-								<!-- Product price-->
-								<span class="text-muted text-decoration-line-through">$20.00</span>
-								$18.00
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-						</div>
-					</div>
-				</div>
-				{{-- jarak --}}
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Sale badge-->
-						<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-						<!-- Product image-->
-						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">Special Item</h5>
-								<!-- Product reviews-->
-								<div class="d-flex justify-content-center small text-warning mb-2">
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-								</div>
-								<!-- Product price-->
-								<span class="text-muted text-decoration-line-through">Rp150.000</span>
-								Rp100.000
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-						</div>
-					</div>
-				</div>
-				{{-- jarak --}}
+@endforeach
 			
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Sale badge-->
-						<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-						<!-- Product image-->
-						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">Special Item</h5>
-								<!-- Product reviews-->
-								<div class="d-flex justify-content-center small text-warning mb-2">
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-								</div>
-								<!-- Product price-->
-								<span class="text-muted text-decoration-line-through">Rp200.000</span>
-								Rp150.000
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-						</div>
-					</div>
-				</div>
+				{{-- jarak --}}
+
 				{{-- jarak --}}
 				
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Sale badge-->
-						<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-						<!-- Product image-->
-						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">Special Item</h5>
-								<!-- Product reviews-->
-								<div class="d-flex justify-content-center small text-warning mb-2">
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-									<div class="bi-star-fill"></div>
-								</div>
-								<!-- Product price-->
-								<span class="text-muted text-decoration-line-through">$20.00</span>
-								$18.00
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-						</div>
-					</div>
-				</div>
+				{{-- jarak --}}
+			
+				
+				{{-- jarak --}}
+				
+				
 			{{-- jarak --}}
-			<div class="col mb-5">
-				<div class="card h-100">
-					<!-- Sale badge-->
-					<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-					<!-- Product image-->
-					<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-					<!-- Product details-->
-					<div class="card-body p-4">
-						<div class="text-center">
-							<!-- Product name-->
-							<h5 class="fw-bolder">Special Item</h5>
-							<!-- Product reviews-->
-							<div class="d-flex justify-content-center small text-warning mb-2">
-								<div class="bi-star-fill"></div>
-								<div class="bi-star-fill"></div>
-								<div class="bi-star-fill"></div>
-								<div class="bi-star-fill"></div>
-								<div class="bi-star-fill"></div>
-							</div>
-							<!-- Product price-->
-							<span class="text-muted text-decoration-line-through">$20.00</span>
-							$18.00
-						</div>
-					</div>
-					<!-- Product actions-->
-					<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-						<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-					</div>
-				</div>
-			</div>
+			
 			{{-- jarak --}}
-			<div class="col mb-5">
-				<div class="card h-100">
-					<!-- Sale badge-->
-					<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-					<!-- Product image-->
-					<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-					<!-- Product details-->
-					<div class="card-body p-4">
-						<div class="text-center">
-							<!-- Product name-->
-							<h5 class="fw-bolder">Special Item</h5>
-							<!-- Product reviews-->
-							<div class="d-flex justify-content-center small text-warning mb-2">
-								<div class="bi-star-fill"></div>
-								<div class="bi-star-fill"></div>
-								<div class="bi-star-fill"></div>
-								<div class="bi-star-fill"></div>
-								<div class="bi-star-fill"></div>
-							</div>
-							<!-- Product price-->
-							<span class="text-muted text-decoration-line-through">$20.00</span>
-							$18.00
-						</div>
-					</div>
-					<!-- Product actions-->
-					<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-						<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-					</div>
-				</div>
-			</div>
+			
 			</div>
 		 </div>
 	</section>
