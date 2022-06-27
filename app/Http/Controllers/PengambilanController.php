@@ -3,8 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Alat;
+use App\Models\Customer;
+use App\Models\Transaksi;
+use App\Models\Pemilik;
+use App\Models\Pengambilan;
 
-class Pengembilan extends Controller
+
+
+class PengambilanController extends Controller
 {
     //
     /**
@@ -14,7 +21,8 @@ class Pengembilan extends Controller
      */
     public function index()
     {
-        //
+        $pengambilan = Pengambilan::latest()->get(); //mengambil semua isi
+        return view('customer.dashboardPengambilan', compact('pengambilan'));
     }
 
     /**
@@ -24,7 +32,9 @@ class Pengembilan extends Controller
      */
     public function create()
     {
-        //
+        $pemilik = Pemilik::all();
+        $transaksi = Transaksi::all();
+        return view('customer.dashboardPengambilanTambah', compact('transaksi', 'pemilik'));
     }
 
     /**
@@ -35,7 +45,24 @@ class Pengembilan extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'id_bayar' => 'required', 
+            'id_customer' => 'required',
+            'id_pemilik' => 'required',
+            'tgl_pengambilan' => 'required',
+            
+        ]);
+        $alat = new Pengambilan;
+        $alat->id_bayar = $request->get('id_bayar');
+        $alat->id_customer = $request->get('id_customer');
+        $alat->id_pemilik = $request->get('id_pemilik');
+        $alat->tgl_pengambilan = $request->get('tgl_pengambilan');
+      
+        // dd($alat)->all;
+        $alat->save();
+
+        return redirect()->route('pengambilan.index')->with('success', 'Alat Kamera Berhasil Ditambahkan');
     }
 
     /**

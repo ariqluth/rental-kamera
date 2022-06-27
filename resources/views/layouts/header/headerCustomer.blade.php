@@ -164,7 +164,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{Route('pengambilan')}}" class="nav-link">
+            <a href="{{Route('pengambilan.index')}}" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                Pengambilan Barang
@@ -174,7 +174,7 @@
           </li>
           
           <li class="nav-item">
-            <a href="{{Route('pengembilan')}}" class="nav-link">
+            <a href="{{Route('pengembalian.index')}}" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Pengembilan Barang

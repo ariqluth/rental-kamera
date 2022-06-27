@@ -9,12 +9,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Pengembalian</h1>
+          <h1>Pengambilan</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Pengembalian</a></li>
+            <li class="breadcrumb-item"><a href="#">Pengambilan</a></li>
           </ol>
         </div>
       </div>
@@ -22,41 +22,48 @@
   </section>
 
   <!-- Main content -->
-   <!-- Main content -->
-   <section class="content">
+  <!-- Main content -->
+  <section class="content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-               </div>
+                   </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>Nomer</th>
-                    <th>Kamera</th>
-                    <th>pemilik</th>
-                    <th>kembali tanggal</th>
-                    <th>nama kamera</th>
-                    
+                    <th>bukti pembayaran</th>
+                    <th>customer</th>
+                    <th>Pemilik</th>
+                    <th>tanggal pengembalian</th>
+                    <th>kamera</th>
+
+                  
                   </tr>
                   </thead>
+                  <a href="{{Route('pengembalian.create')}}" class="btn btn-primary float-right">Ambil Kamera</a> 
                   <tbody>
+                    @php
+                    $i = 0;
+                    @endphp
+                    @foreach ($pengembilan as $trs)
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
-                   
-               
+                    <td>{{++$i}}</td>
+                    <td>{{$trs->id_bayar}}</td>
+                    <td>{{$trs->id_customer}}</td>
+                    <td>{{$trs->id_pemilik}}</td>
+                    <td>{{$trs->tgl_pengembalian}}</td>
+                    <td>{{$trs->id_pemilik}}</td>
+                    <td>{{$trs->tgl_pengambilan}}</td>
+                  
                   </tr>
-                
+            
                   </tfoot>
+                  @endforeach
                 </table>
               </div>
               <!-- /.card-body -->
@@ -71,4 +78,5 @@
     </section>
   <!-- /.content -->
 </div>
+
 @endsection

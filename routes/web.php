@@ -11,6 +11,7 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\TesterController;
+use App\Http\Controllers\Auth\PengambilanController;
 use App\Http\Controllers\Payment\TripayCallbackController;
 
 
@@ -102,8 +103,12 @@ Route::get('/customer/dashboard', [CustomerController::class, 'dashboardDetail']
 Route::get('/customer/profile', [CustomerController::class, 'profile'])->name('profile');
 Route::get('/customer/transaksi', [CustomerController::class, 'dashboardTransaksi'])->name('disewaDetail');
 
-Route::get('/customer/pengambilan', [CustomerController::class, 'dashboardPengambilan'])->name('pengambilan');
-Route::get('/customer/pengembalian', [CustomerController::class, 'dashboardPengembilan'])->name('pengembilan');
+// Route::get('/customer/pengambilan', [CustomerController::class, 'dashboardPengambilan'])->name('pengambilan');
+// Route::get('/customer/pengembalian/tambahakan', [CustomerController::class, 'dashboardPengambilanTambah'])->name('pengambilantambah');
+// Route::post('/customer/pengembalian/tambahkan/{tambahkan}', [CustomerController::class, 'dashboardPengambilanStore'])->name('pengambilanstore');
+Route::resource('/pengambilan', '\App\Http\Controllers\PengambilanController');
+Route::resource('/pengembalian', '\App\Http\Controllers\PengembilanController');
+// Route::get('/customer/pengembilan', [CustomerController::class, 'dashboardPengembilan'])->name('pengembilan');
 
 Route::post('callback',[TripayCallbackController::class, 'handle']);
 

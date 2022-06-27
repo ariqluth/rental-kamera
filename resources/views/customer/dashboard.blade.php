@@ -115,6 +115,9 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
+                 @php $i = 0;
+                 @endphp
+                  @foreach ($transaksi as $trs)
                   <thead>
                   <tr>
                     <th>Nomer</th>
@@ -126,16 +129,17 @@
                   </thead>
                   <tbody>
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
+                    <td>{{++$i}}</td>
+                    <td>
+                      {{$trs->reference}}
                     </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
+                    <td>{{$trs->status}}</td>
+                    <td> </td>
                    
                   </tr>
                 
                   </tfoot>
+                  @endforeach
                 </table>
               </div>
               <!-- /.card-body -->

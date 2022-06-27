@@ -36,25 +36,29 @@
                   <tr>
                     <th>Nomer</th>
                     <th>bukti pembayaran</th>
-                    <th>Tanggal pengambilan</th>
-                    <th>Tanggal pengembilan</th>
-                    <th>Status</th>
-                    <th> Aksi</th>
+                    <th>customer</th>
+                    <th>Pemilik</th>
+                    <th>tanggal</th>
+                  
                   </tr>
                   </thead>
+                  <a href="{{Route('pengambilan.create')}}" class="btn btn-primary float-right">Ambil Kamera</a> 
                   <tbody>
+                    @php
+                    $i = 0;
+                    @endphp
+                    @foreach ($pengambilan as $trs)
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td> 4</td>
-                    <td><a href="{{Route('disewaDetail')}}" class="btn btn-primary">Detail</a> </td>
+                    <td>{{++$i}}</td>
+                    <td>{{$trs->id_bayar}}</td>
+                    <td>{{$trs->id_customer}}</td>
+                    <td>{{$trs->id_pemilik}}</td>
+                    <td>{{$trs->tgl_pengambilan}}</td>
+                  
                   </tr>
-                
+            
                   </tfoot>
+                  @endforeach
                 </table>
               </div>
               <!-- /.card-body -->

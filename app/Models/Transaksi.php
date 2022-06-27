@@ -29,4 +29,8 @@ class Transaksi extends Model
     public function user(){
         return $this->belongsTo(User::class); //mendefinisikan bahwa model ini terkait dengan tabel mahasiswa
     }
+
+    public function pengambilan(){
+        return $this->hasMany(Pengambilan::class); //mendefinisikan bahwa model ini terkait dengan tabel mahasiswa
+    }
 }

@@ -13,19 +13,18 @@ class Pengembalian extends Model
     protected $primaryKey = 'id'; // Memanggil isi DB Dengan primarykey
 
     protected $fillable = [
-        'bukti_Pengambilan',
-        'bukti_Pembayaran',
-        'bukti_Sewa',
-        'customer',
-        'pemilik',
-        'admin',
-        'tanggal_Pengembalian' 
+        'id_ambil',
+        'id_bayar',
+        'id_customer',
+        'id_pemilik',
+        'tgl_Pengembalian',
+        'disewa_kamera'
            
  ];
 
- public function pengambalian()
+ public function pengambilan()
   {
-     return $this->belongsTo( Pengambalian::class, 'pembayaran_id');
+     return $this->belongsTo( 'App\Models\Pengambilan');
  }
 
     public function pemilik()

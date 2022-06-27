@@ -17,22 +17,23 @@ class Pengambilan extends Model
  * @var array
  */
     protected $fillable = [
-        'bukti_pembayaran',
-        'customer',
-        'pemilik',
-        'admin',
+        'id_bayar',
+        'id_customer',
+        'id_pemilik',
         'tanggal_pengambilan',
         
            
  ];
 
- public function pembayaran()
+ public function transaksi()
   {
-     return $this->hasOne( Pembayaran::class, 'pembayaran_id');
+     return $this->belongsTo( Pembayaran::class);
  }
 
     public function pengembalian()
     {
-        return $this->belongsToMany(Pengembalian::class);
+        return $this->hasMany(Pengembalian::class);
     }
+
+ 
 }
