@@ -40,7 +40,7 @@
         <p>{{$alat->detailAlat_id}}</p>
       </div>
       <div class="row mt-4">
-        <a href="{{route('detail.show',$alat->id)}}"class="btn-lg btn-primary text-light" style="height: 50 px; text-align: center;"> Pesan Sekarang</a>
+        <a href="{{route('detail.checkout',$alat->id)}}"class="btn-lg btn-primary text-light" style="height: 50 px; text-align: center;"> Pesan Sekarang</a>
       	{{-- <a class="btn btn-primary text-light">Pesan Sekarang</a>  --}}
       </div>
       

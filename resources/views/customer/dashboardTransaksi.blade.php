@@ -32,6 +32,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+              
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -40,27 +41,41 @@
                     <th>Pemilik</th>
                     <th>Harga</th>
                     <th>Tanggal</th>
-                    <th>Tanggal jatuh tempo</th>
-                    <th>Gambar</th>
+                    <th>bank_tujuan</th>
+                    <th>merchant_ref</th>
+                    <th>reference</th>
                     <th>status</th>
-                    <th> Aksi</th>
+           
+    
                   </tr>
                   </thead>
                   <tbody>
+                    @php $i = 0; @endphp
+                    @foreach ($transaksi as $trs)
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
+                    <td>{{++$i}}</td>
+                    <td>{{$trs->alat->nama_alat}}</td>
+                    <td>{{$trs->alat->users_id}}</td>
+                    <td>{{number_format($trs->alat->harga)}}</td>
+                    <td>{{$trs->alat->created_at}}</td>
+                    <td>{{$trs->bank_tujuan}}</td>
+                    <td>{{$trs->merchant_ref}}</td>
+                    <td>{{$trs->reference}}</td>
+                    <td>
+                      @if($trs->status == 'paid')
+                      <span class="bg-green-100 text-green-800" style="background-color:green; text-weight:bold ">
+                        {{$trs->status}}
+                      </span>
+                      @else
+                      <span class="bg-red-100 text-red-800" style="background-color:red; text-weight:bold ">
+                        {{$trs->status}}
+                      </span>
+                      @endif
                     </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td><a href="{{Route('disewaDetail')}}" class="btn btn-primary">Detail</a> </td>
+                   
+                   
                   </tr>
-                
+                @endforeach
                   </tfoot>
                 </table>
               </div>

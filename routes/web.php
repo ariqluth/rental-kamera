@@ -11,6 +11,9 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\TesterController;
+use App\Http\Controllers\Payment\TripayCallbackController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +41,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/alat/{alat}', [App\Http\Controllers\HomeController::class,'detail'])->name('home.show');
-Route::post('transaksi/product', [HomeController::class, 'store'])->name('transaksi.store');
+// Route::post('transaksi/product', [HomeController::class, 'store'])->name('transaksi.store');
 // detail category camera
 Route::get('/detail-category-DLSR', [App\Http\Controllers\CustomerController::class, 'categoryDSLR'])->name('categoryDLSR');
 
@@ -87,15 +90,22 @@ Route::get('admin/laporan', [AdminController::class, 'datalaporan'])->name('data
 
 // Customer 
 Route::get('/customer/home', [CustomerController::class, 'homepage'])->name('homecustomer');
-Route::get('/alat/{alat}', [App\Http\Controllers\CustomerController::class,'detail'])->name('customer.show');
+Route::get('/alat/{alat}', [App\Http\Controllers\CustomerController::class,'detail'])->name('customer.product');
 Route::resource('/customer/profile', '\App\Http\Controllers\CustomerController');
-Route::get('/detail/{alat}', [App\Http\Controllers\CustomerController::class,'pembayaran'])->name('detail.show');
+Route::get('/detail/{alat}', [App\Http\Controllers\CustomerController::class,'pembayaran'])->name('detail.checkout');
+Route::post('/transaksi', [App\Http\Controllers\CustomerController::class, 'store'])->name('transaksi.store');
+Route::get('/transaksi/{reference}', [App\Http\Controllers\CustomerController::class,'transaksidetail'])->name('transaksi.detail');
+
+
 
 Route::get('/customer/dashboard', [CustomerController::class, 'dashboardDetail'])->name('dashboardDetail');
 Route::get('/customer/profile', [CustomerController::class, 'profile'])->name('profile');
-Route::get('/customer/transaksi', [CustomerController::class, 'dashboardTransaksi'])->name('transaksi');
+Route::get('/customer/transaksi', [CustomerController::class, 'dashboardTransaksi'])->name('disewaDetail');
+
 Route::get('/customer/pengambilan', [CustomerController::class, 'dashboardPengambilan'])->name('pengambilan');
 Route::get('/customer/pengembalian', [CustomerController::class, 'dashboardPengembilan'])->name('pengembilan');
+
+Route::post('callback',[TripayCallbackController::class, 'handle']);
 
 
 // contact dam about us

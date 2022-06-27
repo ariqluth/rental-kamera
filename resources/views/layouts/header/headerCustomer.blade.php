@@ -156,7 +156,7 @@
           
           </li>
           <li class="nav-item">
-            <a href="{{Route('transaksi')}}" class="nav-link">
+            <a href="{{Route('disewaDetail')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Transaksi Pembayaran

@@ -15,13 +15,12 @@ class CreatePenyewaanTable extends Migration
     {
         Schema::create('penyewaan', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_customer');
-            $table->integer('id_pemilik');
-            $table->integer('id_alat');
+            $table->biginteger('id_customer');
+            $table->biginteger('id_pemilik');
+            $table->biginteger('id_alat');
             $table->date('tanggal_sewa');
             $table->string('total_bayar');
             $table->string('kamera_disewa');
-            $table->string('jumlah_disewa');
             $table->string('alamat_tujuan');
             $table->timestamps();
         });

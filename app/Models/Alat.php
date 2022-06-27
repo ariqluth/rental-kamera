@@ -39,7 +39,7 @@ class Alat extends Model
     return $this->belongsTo(Detail_Alat::class);
 }
    
-   public function penyewaan() {
-    return $this->hasOne(Pembayaran::class); //mendefinisikan bahwa model ini terkait dengan tabel mahasiswa
+   public function transaksi() {
+    return $this->hasMany(Transaksi::class); //mendefinisikan bahwa model ini terkait dengan tabel mahasiswa
     }
 }

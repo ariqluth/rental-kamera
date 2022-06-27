@@ -35,6 +35,7 @@
                   <tr>
                     <th>Nomer</th>
                     <th>Kondisi</th>
+                    <th>sub nama</th>
                     <th> Aksi</th>
                   </tr>
                   </thead>
@@ -46,7 +47,7 @@
                   <tr>
                     <td>{{++$i}}</td>
                     <td>{{$alt->kondisi_alat}}</td>
-                    <td>{{$alt->sub_nama}}</td>>
+                    <td>{{$alt->sub_nama}}</td>
                     <td><a href="{{route('kondisi-kamera.edit',$alt->id)}}"class="btn btn-warning">Update</a> 
                       <button type="submit" class="btn btn-sm btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Delete</button>
                     </td>

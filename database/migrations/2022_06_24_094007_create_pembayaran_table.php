@@ -15,18 +15,21 @@ class CreatePembayaranTable extends Migration
     {
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->Integer('id_customer');
-            $table->Integer('id_sewa');
-            $table->Integer('id_pemilik');
-            $table->date('tanggal_bayar');
-            $table->string('jumlah');
-            $table->string('bank');
+            $table->foreignId('id_customer')->constraint();
+            $table->foreignId('id_pemilik')->constraint();
+            $table->string('reference');
+            $table->string('merchant_ref');
             $table->string('bank_tujuan');
-            $table->string('disewa_kamera');
+            $table->string('harga');
+            $table->foreignId('alat_id')->constraint();
+            $table->enum('status', ['paid','unpaid'])->default('unpaid');
             $table->timestamps();
         });
     }
 
+
+
+    
     /**
      * Reverse the migrations.
      *

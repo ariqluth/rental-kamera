@@ -12,13 +12,12 @@ class Penyewaan extends Model
     protected $primaryKey = 'id'; // Memanggil isi DB Dengan primarykey
 
     protected $fillable = [
-        'customer',
-        'pemilik',
-        'kondisi_Kamera',
-        'tanggal_Sewa',
-        'total_disewa',
+        'id_customer',
+        'id_pemilik',
+        'id_alat',
+        'tanggal_sewa',
+        'harga',
         'kamera_disewa',
-        'jumlah_disewa',
         'alamat_tujuan',
         
            
@@ -27,6 +26,10 @@ class Penyewaan extends Model
  public function customer()
   {
      return $this->belongsTo( Pembayaran::class, 'pembayaran_id');
+ }
+
+ public function alat() {
+    return $this->belongsTo( Alat::class, 'id');
  }
 
     public function pengembalian()
