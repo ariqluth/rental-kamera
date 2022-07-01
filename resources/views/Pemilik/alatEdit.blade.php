@@ -20,7 +20,8 @@
     </section>
 
     <!-- Main content -->
-    <form method="post" action="{{ route('alat.update',$alat->id) }}" id="myForm" enctype="multipart/form-data">
+    <form method="post" action="{{ route('alat.update', $alat->id) }}" id="myForm" enctype="multipart/form-data">
+
       @csrf
       @method('PUT')
     <section class="content">

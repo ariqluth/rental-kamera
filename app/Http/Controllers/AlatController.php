@@ -117,7 +117,7 @@ class AlatController extends Controller
     public function edit( $id)
     {
         //
-        $alat = Alat::with('pemilik','detail_kamera')->where('id','id', $id)->first(); 
+        $alat = Alat::with('pemilik','detail_kamera')->where('id', $id)->first(); 
         $pemilik = Pemilik::all();
         $detail = Detail_Alat::all();
         // $pemilik = Pemilik::all(); //mendapatkan data dari tabel kelas
