@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Alat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Pengambilan;
+use App\Models\Pengembalian;
 
 class PemilikController extends Controller
 {
@@ -42,7 +44,9 @@ class PemilikController extends Controller
 
     public function dataPelanggan()
     {
-        return view('Pemilik.pengelolaPelanggan');
+        $pengambilan = Pengambilan::All();
+        $pengembalian = Pengembalian::All();
+        return view('Pemilik.pengelolaPelanggan',compact(['pengambilan','pengembalian']));
     }
 
     public function datalaporan()

@@ -36,27 +36,27 @@
                   <tr>
                     <th>Nomer</th>
                     <th>Bukti Pembayaran</th>
-                    <th>tanggal Pengambilan</th>
-                    <th>tanggal terakhir dikembalikan</th>
                     <th>Customer</th>
-                    <th>Pemilik kamera</th>
-                    <th> Aksi</th>
+                    <th>Tanggal Pengambilan</th>
+               
                   </tr>
                   </thead>
                   <tbody>
+                    @php
+                    $i = 0;
+                    @endphp
+
+                    @foreach($pengambilan as $pgn)
                   <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
-                    <td>X</td>
-                    <td><a href="#" class="btn btn-primary">Detail</a>  </td>
+                  <td>{{++$i}}</td>
+                  <td>{{$pgn->id_bayar}}</td>
+                  <td>{{$pgn->id_customer}}</td>
+                  <td>{{$pgn->tgl_pengambilan}}</td>
+           
                   </tr>
                 
                   </tfoot>
+                  @endforeach
                 </table>
               </div>
               <!-- /.card-body -->
@@ -73,30 +73,30 @@
                     <thead>
                     <tr>
                       <th>Nomer</th>
-                      <th>Kamera</th>
-                      <th>Category</th>
-                      <th>Customer</th>
-                      <th>Pemilik kamera</th>
-                      <th>diKembalikan Tanggal</th>
-                      <th>Customer</th>
-                      <th> Aksi</th>
+                      <th>bukti pembayaran</th>
+                      <th>customer</th>
+                      <th>Pemilik</th>
+                      <th>tanggal pengembalian</th>
+                      <th>pemilik</th>
+                      <th>kamera</th>
+                
                     </tr>
                     </thead>
+                    @foreach($pengembalian as $pgnn)
                     <tbody>
                     <tr>
-                      <td>Trident</td>
-                      <td>Internet
-                        Explorer 4.0
-                      </td>
-                      <td>Win 95+</td>
-                      <td> 4</td>
-                      <td>X</td>
-                      <td>X</td>
-                      <td>X</td>
-                      <td><a href="" class="btn btn-primary">Detail</a></td>
-                    </tr>
+                      <td>{{++$i}}</td>
+                      <td>{{$pgnn->id_bayar}}</td>
+                      <td>{{$pgnn->id_customer}}</td>
+                      <td>{{$pgnn->id_pemilik}}</td>
+                      <td>{{$pgnn->tgl_pengembalian}}</td>
+                      <td>{{$pgnn->id_pemilik}}</td>
+                      <td>{{$pgnn->disewa_kamera}}</td>
+                      
+                      </tr>
                   
                     </tfoot>
+                    @endforeach
                   </table>
                 </div>
                 <!-- /.card-body -->

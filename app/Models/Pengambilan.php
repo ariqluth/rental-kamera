@@ -27,7 +27,7 @@ class Pengambilan extends Model
 
  public function transaksi()
   {
-     return $this->belongsTo( Pembayaran::class);
+     return $this->belongsTo( Transaksi::class);
  }
 
     public function pengembalian()

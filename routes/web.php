@@ -111,7 +111,7 @@ Route::resource('/pengembalian', '\App\Http\Controllers\PengembilanController');
 // Route::get('/customer/pengembilan', [CustomerController::class, 'dashboardPengembilan'])->name('pengembilan');
 
 Route::post('callback',[TripayCallbackController::class, 'handle']);
-
+Route::get('/pengambilan/cetak_pdf', [Pengambilan::class, 'cetak_pdf'])->name('cetak_pdf');
 
 // contact dam about us
 

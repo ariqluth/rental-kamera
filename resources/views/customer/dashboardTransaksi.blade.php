@@ -29,6 +29,7 @@
             <div class="card">
               <div class="card-header">
               <a href="{{Route('home')}}" class="btn-lg btn-success float-sm-right">Sewa Kamera Lagi</a>
+             
               </div>
               <!-- /.card-header -->
               <div class="card-body">

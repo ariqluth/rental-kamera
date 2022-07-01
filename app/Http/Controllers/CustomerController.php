@@ -7,7 +7,9 @@ use App\Models\Alat;
 use App\Models\Customer;
 use App\Models\Transaksi;
 use App\Models\Pemilik;
+use App\Models\Pengambilan;
 use App\Http\Controllers\Payment\TripayController;
+
 
 class CustomerController extends Controller
 {
@@ -260,5 +262,6 @@ class CustomerController extends Controller
             {
                 //
             }
+
         }
         

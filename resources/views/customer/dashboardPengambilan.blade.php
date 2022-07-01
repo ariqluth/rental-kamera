@@ -42,7 +42,9 @@
                   
                   </tr>
                   </thead>
+                  <a href="{{Route('cetak_pdf')}}" class="btn btn-primary float-right">Cetak pdf</a> 
                   <a href="{{Route('pengambilan.create')}}" class="btn btn-primary float-right">Ambil Kamera</a> 
+                 
                   <tbody>
                     @php
                     $i = 0;

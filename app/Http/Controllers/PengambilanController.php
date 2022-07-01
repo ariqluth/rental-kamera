@@ -8,7 +8,7 @@ use App\Models\Customer;
 use App\Models\Transaksi;
 use App\Models\Pemilik;
 use App\Models\Pengambilan;
-
+use PDF;
 
 
 class PengambilanController extends Controller
@@ -21,7 +21,7 @@ class PengambilanController extends Controller
      */
     public function index()
     {
-        $pengambilan = Pengambilan::latest()->get(); //mengambil semua isi
+        $pengambilan = Pengambilan::with('transaksi')->latest()->get(); //mengambil semua isi
         return view('customer.dashboardPengambilan', compact('pengambilan'));
     }
 
@@ -108,5 +108,12 @@ class PengambilanController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    
+    public function cetak_pdf(){
+        $pengambilan = Pengambilan::all();
+        $pdf = PDF::loadView('customer.printTransaksi',['pengambilan'=>$pengambilan]);
+        return $pdf->download();
     }
 }
