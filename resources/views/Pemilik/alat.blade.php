@@ -62,7 +62,8 @@
                     <td>{{$alt->kategori}}</td>
                     <td>{{$alt->users_id}}</td>
                     <td><img src="{{asset('storage/'.$alt->gambar)}}"  width="100px" height="100px"></td>
-                    <td><a href="#" class="btn btn-primary">Detail</a> <a href="{{route('alat.edit',$alt->id)}}"class="btn btn-warning">Update</a> 
+                    <td><a href="#" class="btn btn-primary">Detail</a>
+                       <a href="{{route('alat.edit',$alt->id)}}"class="btn btn-warning">Update</a> 
                       <button type="submit" class="btn btn-sm btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Delete</button>
                     </td>
                     @csrf
