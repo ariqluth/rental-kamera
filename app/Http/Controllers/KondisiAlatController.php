@@ -109,6 +109,23 @@ class KondisiAlatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $alat = Detail_Alat::findOrFail($id);
+        $alat->delete();  
+        //   if ($alat) {
+        //     return redirect()
+        //         ->route('kondisi-kamera.index')
+        //         ->with([
+        //             'success' => 'Post has been deleted successfully'
+        //         ]);
+        // } else {
+        //     return redirect()
+        //         ->route('kondisi-kamera.index')
+        //         ->with([
+        //             'error' => 'Some problem has occurred, please try again'
+        //         ]);
+        // }
+  
+        return redirect()->route('kondisi-kamera.index')->with('success', 'alat berhasil dihapus');
+    
     }
 }

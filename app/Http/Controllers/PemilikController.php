@@ -196,11 +196,15 @@ class PemilikController extends Controller
      */
     public function destroy($id)
     {
-        // $mahasiswa = Mahasiswa::findOrFail($nim);
+        $alat = Alat::findOrFail($id);
+        
 
-        // if( Storage::delete('public/' . $mahasiswa->featured_image)) {
-        //   $mahasiswa->delete();  
-    // }
+        if( Storage::delete('public/' . $alat->gambar)) {
+          $alat->delete();  
+        }
+  
+        return redirect()->route('alat.index')->with('success', 'alat berhasil dihapus');
+    }
 
     return redirect()->route('alat.index')->with('success', 'alat berhasil dihapus');
 

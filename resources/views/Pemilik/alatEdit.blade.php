@@ -48,8 +48,7 @@
               </div>
               <div class="form-group">
                 <label for="inputStatus">kategori</label>
-                <select id="kategori" class="form-control custom-select" name="kategori">
-                  <option  value="{{ $alat->kategori }}"selected > </option>
+                <select id="kategori" class="form-control custom-select" name="kategori"  value="{{ $alat->kategori }}"aria-describedby="kategori" >
                   <option>DSLR</option>
                   <option>Mirrorless</option>
                   <option>Action Camera</option>
@@ -86,21 +85,30 @@
                     @endforeach
                 </select>
             </div>
-            </div>
-            <!-- /.card-body -->
+
+            <div class="form-group">
+              <label for="Kelas">Kondisi</label>
+              <select class="custom-select" id="kondisi" name="kondisi">
+                  @foreach($detail as $dtl)
+                  <option value="{{ $dtl->id }}">{{ $dtl->kondisi_alat }}</option>
+                  @endforeach
+              </select>
           </div>
+        </div>
+            <!-- /.card-body -->
+ </div>
           <!-- /.card -->
         </div>
        
       </div>
       <div class="row">
         <div class="col-12">
-          <a href="#" class="btn btn-secondary">Cancel</a>
-          <input type="submit" value="Save Change" class="btn btn-success float-right">
+          <a href="{{route('alat.index')}}" class="btn btn-secondary">Cancel</a>  
+          <button type="submit" value="submit"  class="btn btn-primary">Submit</button>
         </div>
       </div>
     </section>
-    </form>
+  </form>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

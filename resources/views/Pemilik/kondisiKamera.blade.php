@@ -48,11 +48,19 @@
                     <td>{{++$i}}</td>
                     <td>{{$alt->kondisi_alat}}</td>
                     <td>{{$alt->sub_nama}}</td>
+
+                    <form action="{{ route('kondisi-kamera.destroy', $alt->id) }}" method="POST">
                     <td><a href="{{route('kondisi-kamera.edit',$alt->id)}}"class="btn btn-warning">Update</a> 
-                      <button type="submit" class="btn btn-sm btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Delete</button>
+              
+                      @csrf
+                      @method('DELETE')
+        {{--             
+                     <a href="#" type="submit" class="btn btn-warning button" data-id="{{$mhs->nim}}">Delete</a>
+                      --}}
+                      <button type="submit" class="btn btn-danger show_confirm" data-toggle="tooltip" title='Delete'>Delete</button>
+       
+        </form>
                     </td>
-                    @csrf
-                    @method('DELETE')
                   </tr>
                 @endforeach
                   </tfoot>

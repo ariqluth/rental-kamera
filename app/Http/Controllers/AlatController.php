@@ -122,6 +122,7 @@ class AlatController extends Controller
         $detail = Detail_Alat::all();
         // $pemilik = Pemilik::all(); //mendapatkan data dari tabel kelas
         return view('Pemilik.alatEdit', compact('alat', 'pemilik', 'detail'));
+    
     }
 
 
@@ -153,7 +154,7 @@ class AlatController extends Controller
     // validasi foto jika foto lama akan dihapus / diganti
     if ($alat->gambar && file_exists(storage_path('app/public/' . $alat->gambar))) {
         Storage::delete('public/' . $alat->gambar);  
-
+        
         
     }
     $image_name = $request->file('image')->store('images', 'public');
@@ -165,7 +166,8 @@ class AlatController extends Controller
     $alat->harga = $request->get('harga');
     $alat->stok = $request->get('stok');
     $alat->users_id = $request->get('pemilik');
-    $alat->detaiAlat_id = $request->get('kondisi');
+    $alat->detailAlat_id = $request->get('kondisi');
+    // dd($alat)->all;
     $alat->save();
 
     return redirect()->route('alat.index')
@@ -182,6 +184,7 @@ class AlatController extends Controller
     public function destroy($id)
     {
         $alat = Alat::findOrFail($id);
+        
 
         if( Storage::delete('public/' . $alat->gambar)) {
           $alat->delete();  
